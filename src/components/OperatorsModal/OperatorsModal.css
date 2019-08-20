@@ -38,3 +38,7 @@
     text-align: right;
     max-width: 115px;
 }
+
+.modal-open .modal {
+    overflow-y: hidden;
+}
