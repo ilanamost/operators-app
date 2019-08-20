@@ -17,11 +17,13 @@ class OperatorsFilter extends Component {
 
     render () {
         return (
-            <div className="contact-filter">
+            <div className="operator-filter">
                 <input
                     placeholder="Search"
                     value={this.state.term}
                     onChange={this.onInputChange} />
+                <button> הוספת מפעיל </button>
+                <h3> ניהול מפעילים</h3>
             </div>
         );
     } 
