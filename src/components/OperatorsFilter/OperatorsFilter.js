@@ -15,6 +15,10 @@ class OperatorsFilter extends Component {
         this.props.onFilter(term);
     }
 
+    onAddOperatorClick = () => {
+        this.props.onAddOperatorClick();
+    }
+
     render () {
         return (
             <div className="operator-filter">
@@ -22,7 +26,7 @@ class OperatorsFilter extends Component {
                     placeholder="חיפוש"
                     value={this.state.term}
                     onChange={this.onInputChange} />
-                <button> הוספת מפעיל </button>
+                <button onClick={this.onAddOperatorClick} > הוספת מפעיל </button>
                 <h3> ניהול מפעילים</h3>
             </div>
         );

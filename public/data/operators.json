@@ -7,7 +7,17 @@
     "ContactMan": "יונתן כהן",
     "lastQueryDate": "3/3/2019",
     "lastPullDate": "3/3/2019",
-    "lastCorrectPullDate": "3/3/2019"
+    "lastCorrectPullDate": "3/3/2019",
+    "numberOfOperators": 0,
+    "firstName": "ohad",
+    "lastName": "havel",
+    "phone": "052-6766665656",
+    "dataPullFrequesncy": "כל יום",
+    "numberOfPreviousStations": 0,
+    "predictionSystem": "גוגל",
+    "protocolVersion": "VM",
+    "addressForTravelQuery": "www.google.com",
+    "addressForHistoryQuery":  "www.google.com"
   },
   {
     "id": 2,
@@ -17,6 +27,16 @@
     "ContactMan": "אלכס שדה",
     "lastQueryDate": "4/3/2019",
     "lastPullDate": "4/3/2019",
-    "lastCorrectPullDate": "4/3/2019"
+    "lastCorrectPullDate": "4/3/2019",
+    "numberOfOperators": 0,
+    "firstName": "ohad",
+    "lastName": "levi",
+    "phone": "052-1111111",
+    "dataPullFrequesncy": "כל יום",
+    "numberOfPreviousStations": 5,
+    "predictionSystem": "גוגל",
+    "protocolVersion": "VM",
+    "addressForTravelQuery": "www.google.com",
+    "addressForHistoryQuery":  "www.google.com"
   }
 ]

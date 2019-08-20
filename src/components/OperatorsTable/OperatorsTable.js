@@ -13,13 +13,13 @@ const OperatorsTable = (props) => {
               <td> 
                 <div className="option-container">
                     <div className={operator.isManageble? 'option-on' : 'option-off'}></div>
-                    <span>{operator.isManageble ? "תקלה" : "פעיל" }</span>
+                    <span>{operator.isManageble ? "פעיל" : "תקלה" }</span>
                 </div>
              </td>
               <td> 
               <div className="option-container">
                     <div className={operator.isFunctional? 'option-on' : 'option-off'}></div>
-                    <span>{operator.isFunctional ? "תקלה" : "פעיל" }</span>
+                    <span>{operator.isFunctional ? "פעיל" : "תקלה" }</span>
                 </div>
               </td>
               <td> {operator.ContactMan}</td>
