@@ -87,23 +87,35 @@ class OperatorsModal extends Component {
               <div className="input-field-group">
                 <Label for="system">מערכת חיווי</Label>
                 <Input
+                    type="select"
                     id="system"
                     value={this.props.operator.system}
                     onChange={e => {
                      this.props.onInputChange(e, 'system', false);
                     }}
-                />
+                >
+              <option value="" selected disabled hidden> Select </option>
+              <option value="1">חיווי 1</option>
+              <option value="2">חיווי 2</option>
+              <option value="3">חיווי 3</option>
+              </Input>
               </div>
                
             <div className="input-field-group"> 
                 <Label for="protocolVersion">גרסת פרוטוקול</Label>
                 <Input
-                id="protocolVersion"
-                value={this.props.operator.protocolVersion}
-                onChange={e => {
-                  this.props.onInputChange(e, 'protocolVersion', false);
-                }}
-              />
+                    type="select"
+                    id="protocolVersion"
+                    value={this.props.operator.protocolVersion}
+                    onChange={e => {
+                     this.props.onInputChange(e, 'protocolVersion', false);
+                    }}
+              >
+              <option value="" selected disabled hidden> Select </option>
+              <option value="1">פרוטוקול 1</option>
+              <option value="2">פרוטוקול 2</option>
+              <option value="3">פרוטוקול 3</option>
+             </Input>
             </div>
               
             <div className="input-field-group">
