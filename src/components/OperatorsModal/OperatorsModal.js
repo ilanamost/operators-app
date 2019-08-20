@@ -94,7 +94,7 @@ class OperatorsModal extends Component {
                      this.props.onInputChange(e, 'system', false);
                     }}
                 >
-              <option value="" selected disabled hidden> Select </option>
+              <option defaultValue=""> Select </option>
               <option value="1">חיווי 1</option>
               <option value="2">חיווי 2</option>
               <option value="3">חיווי 3</option>
@@ -111,7 +111,7 @@ class OperatorsModal extends Component {
                      this.props.onInputChange(e, 'protocolVersion', false);
                     }}
               >
-              <option value="" selected disabled hidden> Select </option>
+              <option defaultValue=""> Select </option>
               <option value="1">פרוטוקול 1</option>
               <option value="2">פרוטוקול 2</option>
               <option value="3">פרוטוקול 3</option>

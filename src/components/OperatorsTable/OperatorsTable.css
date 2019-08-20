@@ -25,3 +25,11 @@
   background-color: #e10037;
   border-radius: 50%;
 }
+
+.open-row {
+  height: 400px;
+}
+
+.arrow {
+  cursor: pointer;
+}

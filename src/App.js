@@ -8,22 +8,13 @@ import OperatorsModal from './components/OperatorsModal/OperatorsModal';
 import utilsService from './services/utilsService';
 import operatorsService from './services/operatorsService';
 
-import { Modal, 
-  ModalHeader, 
-  ModalBody, 
-  ModalFooter, 
-  Table, 
-  Button, 
-  FormGroup, 
-  Label, 
-  Input } from "reactstrap";
-
 class App extends Component {
   state = {
     operators: [],
     filteredOperators: [],
     isOperatorModal: false,
-    operator: operatorsService.getEmptyOperator()
+    operator: operatorsService.getEmptyOperator(),
+    openRowIndex: -1
   };
 
   componentDidMount() {
@@ -69,6 +60,12 @@ class App extends Component {
     this.setState({ operator });
   }
 
+  toggleRow = (i) => {
+    let { openRowIndex } = this.state;
+    (openRowIndex === i) ?  openRowIndex = -1 : openRowIndex = i;
+    this.setState({ openRowIndex });
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,8 +73,11 @@ class App extends Component {
           <OperatorsFilter onFilter={this.operatorSearch} 
           onAddOperatorClick={this.toggleOperatorModal}/>
         </div>
+
         <div className="operators-container"> 
-          <OperatorsTable operators={this.state.filteredOperators} />
+          <OperatorsTable operators={this.state.filteredOperators} 
+          toggleRow={this.toggleRow}
+          rowIndex={this.state.openRowIndex}/>
         </div>
 
         <OperatorsModal operator={this.state.operator} 

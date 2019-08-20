@@ -6,9 +6,11 @@ import './OperatorsTable.css'
 const OperatorsTable = (props) => {
     const operators = props.operators.map((operator, i) => {
         return (
-            <tr key={operator.id}>
-              <td> # </td>
-              <td> {operator.operatorName}</td>
+            <tr key={operator.id} className={props.rowIndex === i? 'open-row' : 'closed-row'}>
+              <td className="arrow" onClick={() => {
+                  props.toggleRow(i);
+                }}> # </td>
+              <td> {operator.operatorName} </td>
               <td> {operator.id} </td>
               <td> 
                 <div className="option-container">
