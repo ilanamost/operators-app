@@ -3,6 +3,8 @@ import './App.css';
 
 import OperatorsTable from './components/OperatorsTable/OperatorsTable';
 import OperatorsFilter from './components/OperatorsFilter/OperatorsFilter';
+import OperatorsModal from './components/OperatorsModal/OperatorsModal';
+
 import utilsService from './services/utilsService';
 import operatorsService from './services/operatorsService';
 
@@ -61,68 +63,29 @@ class App extends Component {
     });
   }
 
+  handleInputChange = (e, propName, isNumber) => {
+    let { operator } = this.state;
+    operator[propName] = isNumber? +e.target.value : e.target.value;
+    this.setState({ operator });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="search-container">
-          <OperatorsFilter onFilter={this.operatorSearch} onAddOperatorClick={this.toggleOperatorModal}/>
+          <OperatorsFilter onFilter={this.operatorSearch} 
+          onAddOperatorClick={this.toggleOperatorModal}/>
         </div>
         <div className="operators-container"> 
           <OperatorsTable operators={this.state.filteredOperators} />
         </div>
 
-        <Modal
-          isOpen={this.state.isOperatorModal}
-          toggle={() => this.toggleOperatorModal()}
-        >
-          <ModalHeader toggle={() => this.toggleOperatorModal()}> הוספת מפעיל </ModalHeader>
-          <ModalBody>
-            <FormGroup>
-            <Label for="operatorsNumber">מספר מפעילים במערכת</Label>
-            <Input id="operatorsNumber" value={this.state.operator.numberOfOperators} onChange={(e) => {
-              let { operator } = this.state;
-              operator.numberOfOperators = +e.target.value;
-              this.setState({ operator });
-            }}/>
-            </FormGroup>
-
-            <FormGroup>
-            <Label for="firstName">שם פרטי</Label>
-            <Input id="firstName" value={this.state.operator.firstName} onChange={(e) => {
-              let { operator } = this.state;
-              operator.firstName = e.target.value;
-              this.setState({ operator });
-            }}/>
-            </FormGroup>
-
-            <FormGroup>
-            <Label for="phone">טלפון</Label>
-            <Input id="phone" value={this.state.operator.phone} onChange={(e) => {
-              let { operator } = this.state;
-              operator.phone = e.target.value;
-              this.setState({ operator });
-            }}/>
-            </FormGroup>
-
-            <FormGroup>
-            <Label for="operatorName">שם מפעיל</Label>
-            <Input id="operatorName" value={this.state.operator.operatorName} onChange={(e) => {
-              let { operator } = this.state;
-              operator.operatorName = e.target.value;
-              this.setState({ operator });
-            }}/>
-            </FormGroup>
-            
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={() => this.addOperator()}>
-              אישור
-            </Button>{" "}
-            <Button color="secondary" onClick={() => this.toggleOperatorModal()}>
-              ביטול
-            </Button>
-          </ModalFooter>
-        </Modal>
+        <OperatorsModal operator={this.state.operator} 
+        onToggleOperatorModal={this.toggleOperatorModal}
+        onAddOperator={this.addOperator}
+        isOperatorModal={this.state.isOperatorModal}
+        onInputChange={this.handleInputChange}
+        />
       </div>
     );
   }
