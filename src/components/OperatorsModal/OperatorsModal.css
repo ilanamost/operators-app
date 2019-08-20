@@ -1,0 +1,40 @@
+.modal-dialog {
+    max-width: 800px;
+}
+
+.modal-header {
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.modal-header .close {
+    margin: unset;
+}
+
+.modal-body {
+    display: flex;
+}
+
+.modal-content {
+    direction: rtl;
+}
+
+.modal-footer {
+    justify-content: flex-start;
+    border-top: unset;
+}
+
+.modal-footer>:not(:last-child) {
+    margin-left: .25rem;
+}
+
+.input-field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 2% 10%;
+}
+
+.input-field-group > label {
+    text-align: right;
+    max-width: 115px;
+}

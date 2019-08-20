@@ -11,10 +11,11 @@
     "numberOfOperators": 0,
     "firstName": "ohad",
     "lastName": "havel",
+    "email": "",
     "phone": "052-6766665656",
-    "dataPullFrequesncy": "כל יום",
+    "dataPullFrequensy": "כל יום",
     "numberOfPreviousStations": 0,
-    "predictionSystem": "גוגל",
+    "system": "גוגל",
     "protocolVersion": "VM",
     "addressForTravelQuery": "www.google.com",
     "addressForHistoryQuery":  "www.google.com"
