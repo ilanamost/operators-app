@@ -1,0 +1,27 @@
+.operators-table {
+  direction: rtl;
+}
+
+.table td, .table th {
+  padding: 10px;
+  text-align: right;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+}
+
+.option-on {
+  height: 10px;
+  width: 10px;
+  background-color: #00b487;
+  border-radius: 50%;
+}
+
+.option-off {
+  height: 10px;
+  width: 10px;
+  background-color: #e10037;
+  border-radius: 50%;
+}

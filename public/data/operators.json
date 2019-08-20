@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "operatorName": "אגד",
+    "isManageble": true,
+    "isFunctional": true,
+    "ContactMan": "יונתן כהן",
+    "lastQueryDate": "3/3/2019",
+    "lastPullDate": "3/3/2019",
+    "lastCorrectPullDate": "3/3/2019"
+  },
+  {
+    "id": 2,
+    "operatorName": "אגד",
+    "isManageble": false,
+    "isFunctional": false,
+    "ContactMan": "אלכס שדה",
+    "lastQueryDate": "4/3/2019",
+    "lastPullDate": "4/3/2019",
+    "lastCorrectPullDate": "4/3/2019"
+  }
+]
