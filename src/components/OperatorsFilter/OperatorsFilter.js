@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Button } from "reactstrap";
+
 import './OperatorsFilter.css';
 
 class OperatorsFilter extends Component {
@@ -26,7 +28,7 @@ class OperatorsFilter extends Component {
                     placeholder="חיפוש"
                     value={this.state.term}
                     onChange={this.onInputChange} />
-                <button onClick={this.onAddOperatorClick} > הוספת מפעיל </button>
+                <Button onClick={this.onAddOperatorClick} > הוספת מפעיל </Button>
                 <h3> ניהול מפעילים</h3>
             </div>
         );

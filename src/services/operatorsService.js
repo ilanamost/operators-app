@@ -13,16 +13,16 @@ function getEmptyOperator() {
         lastPullDate: '3/3/2019',
         lastCorrectPullDate: '3/3/2019',
         numberOfOperators: 0,
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        dataPullFrequesncy: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        dataPullFrequesncy: '',
         numberOfPreviousStations: 0,
-        predictionSystem: "",
-        protocolVersion: "",
-        addressForTravelQuery: "",
-        addressForHistoryQuery:  ""
+        predictionSystem: '',
+        protocolVersion: '',
+        addressForTravelQuery: '',
+        addressForHistoryQuery: ''
     };
   }
 

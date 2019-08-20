@@ -14,7 +14,8 @@ class App extends Component {
     filteredOperators: [],
     isOperatorModal: false,
     operator: operatorsService.getEmptyOperator(),
-    openRowIndex: -1
+    openRowIndex: -1,
+    isInEditMode: false
   };
 
   componentDidMount() {
@@ -35,20 +36,41 @@ class App extends Component {
     });
   };
 
-  toggleOperatorModal = () => {
+  toggleOperatorModal = (id) => {
+    let { operators, operator } = this.state;
+    let operatorToEdit;
+    if(id) {
+    operatorToEdit = operators.find((operator) => {
+      return operator.id === id
+    });
+    }
     this.setState({
-      isOperatorModal: !this.state.isOperatorModal
+      isOperatorModal: !this.state.isOperatorModal,
+      operator: (id) ? operatorToEdit : operator,
+      isInEditMode: (id) ? true : false
     });
   }
 
   addOperator = () => {
-    let { operators } = this.state;
-    const operator = this.state.operator;
+    let { operators, operator } = this.state;
     operator.id = utilsService.getNextId(operators);
 
     this.setState({
       operators: [...operators, operator],
       filteredOperators: [...operators, operator],
+      isOperatorModal: false,
+      operator: operatorsService.getEmptyOperator()
+    });
+  }
+
+  updateOperator = () => {
+    let { operators, operator } = this.state;
+    const operatorIdx = operators.findIndex(currOperator => currOperator.id === operator.id);
+    operators.splice(operatorIdx, 1, operator);
+
+    this.setState({
+      operators: [...operators],
+      filteredOperators: [...operators],
       isOperatorModal: false,
       operator: operatorsService.getEmptyOperator()
     });
@@ -77,12 +99,13 @@ class App extends Component {
         <div className="operators-container"> 
           <OperatorsTable operators={this.state.filteredOperators} 
           toggleRow={this.toggleRow}
-          rowIndex={this.state.openRowIndex}/>
+          rowIndex={this.state.openRowIndex}
+          onToggleOperatorModal={this.toggleOperatorModal}/>
         </div>
 
         <OperatorsModal operator={this.state.operator} 
         onToggleOperatorModal={this.toggleOperatorModal}
-        onAddOperator={this.addOperator}
+        onAddOperator={((this.state.isInEditMode) ? this.updateOperator : this.addOperator)}
         isOperatorModal={this.state.isOperatorModal}
         onInputChange={this.handleInputChange}
         />
