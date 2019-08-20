@@ -19,7 +19,7 @@ class OperatorsFilter extends Component {
         return (
             <div className="operator-filter">
                 <input
-                    placeholder="Search"
+                    placeholder="חיפוש"
                     value={this.state.term}
                     onChange={this.onInputChange} />
                 <button> הוספת מפעיל </button>

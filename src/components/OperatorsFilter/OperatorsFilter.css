@@ -4,3 +4,12 @@
     align-items: center;
     justify-content: flex-end;
 }
+
+.operator-filter > input {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.operator-filter > button {
+    margin: 5px;
+}
