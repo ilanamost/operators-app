@@ -26,7 +26,7 @@ const OperatorsTable = props => {
             props.toggleRow(i);
           }}
         >
-          #
+          <div><i className={props.rowIndex === i ? "fa fa-caret-down" : "fa fa-caret-right"}></i></div>
           <Collapse isOpen={props.rowIndex === i ? true : false}>
             <Card>
               <CardBody onClick={(e) => {

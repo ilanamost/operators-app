@@ -120,6 +120,7 @@ class App extends Component {
           onInputChange={this.handleInputChange}
           title={this.state.isInEditMode ? 'עדכון מפעיל' : 'הוספת מפעיל'}
         />
+        {/* <div><i className="fa fa-spinner fa-spin">no spinner but why</i></div>; */}
       </div>
     );
   }
