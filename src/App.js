@@ -41,9 +41,7 @@ class App extends Component {
     let { operators, operator } = this.state;
     let operatorToEdit;
     if (id) {
-      operatorToEdit = operators.find(operator => {
-        return operator.id === id;
-      });
+      operatorToEdit = operatorsService.getOperatorById(operators, id);
     }
     this.setState({
       isOperatorModal: !this.state.isOperatorModal,
@@ -54,11 +52,11 @@ class App extends Component {
 
   addOperator = () => {
     let { operators, operator } = this.state;
-    operator.id = utilsService.getNextId(operators);
+    const newOperators = operatorsService.addOperator(operators, operator);
 
     this.setState({
-      operators: [...operators, operator],
-      filteredOperators: [...operators, operator],
+      operators: newOperators,
+      filteredOperators: newOperators,
       isOperatorModal: false,
       operator: operatorsService.getEmptyOperator()
     });
@@ -66,14 +64,11 @@ class App extends Component {
 
   updateOperator = () => {
     let { operators, operator } = this.state;
-    const operatorIdx = operators.findIndex(
-      currOperator => currOperator.id === operator.id
-    );
-    operators.splice(operatorIdx, 1, operator);
+    const newOperators = operatorsService.updateOperator(operators, operator);
 
     this.setState({
-      operators: [...operators],
-      filteredOperators: [...operators],
+      operators: newOperators,
+      filteredOperators: newOperators,
       isOperatorModal: false,
       operator: operatorsService.getEmptyOperator()
     });
@@ -120,7 +115,6 @@ class App extends Component {
           onInputChange={this.handleInputChange}
           title={this.state.isInEditMode ? 'עדכון מפעיל' : 'הוספת מפעיל'}
         />
-        {/* <div><i className="fa fa-spinner fa-spin">no spinner but why</i></div>; */}
       </div>
     );
   }

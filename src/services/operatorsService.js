@@ -1,3 +1,5 @@
+import utilsService from './utilsService';
+
 function getEmptyOperator() {
     return {
         id: 1,
@@ -32,7 +34,32 @@ function getOperators(currOperators = null, filterBy = null) {
     return operatorsToReturn;
 }
 
+function getOperatorById(operators, id) {
+  const operatorToEdit = operators.find(operator => {
+    return operator.id === id;
+  });
+
+  return operatorToEdit;
+}
+
+function addOperator(operators, operator) {
+  operator.id = utilsService.getNextId(operators);
+  operators = [...operators, operator];
+  return operators;
+}
+
+function updateOperator(operators, operator) {
+  const operatorIdx = operators.findIndex(
+    currOperator => currOperator.id === operator.id
+  );
+  operators.splice(operatorIdx, 1, operator);
+  return operators;
+}
+
 export default {
   getEmptyOperator,
-  getOperators
+  getOperators,
+  getOperatorById,
+  addOperator,
+  updateOperator
 };
