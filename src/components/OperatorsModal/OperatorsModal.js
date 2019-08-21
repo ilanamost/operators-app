@@ -21,7 +21,7 @@ class OperatorsModal extends Component {
           toggle={() => this.props.onToggleOperatorModal()}
         >
           <ModalHeader toggle={() => this.props.onToggleOperatorModal()}>
-            הוספת מפעיל
+            {this.props.title}
           </ModalHeader>
           <ModalBody>
             <FormGroup>
@@ -30,6 +30,7 @@ class OperatorsModal extends Component {
                 <Input
                     type = "number"
                     id="operatorsNumber"
+                    className="large-input"
                     value={(this.props.operator.numberOfOperators) ? 
                         (this.props.operator.numberOfOperators) : ""}
                     onChange={e => {
@@ -42,6 +43,7 @@ class OperatorsModal extends Component {
                 <Label for="firstName">שם פרטי</Label>
                 <Input
                     id="firstName"
+                    className="large-input"
                     value={this.props.operator.firstName}
                     onChange={e => {
                     this.props.onInputChange(e, 'firstName', false);
@@ -53,6 +55,7 @@ class OperatorsModal extends Component {
                 <Label for="phone">טלפון</Label>
                 <Input
                     id="phone"
+                    className="large-input"
                     value={this.props.operator.phone}
                     onChange={e => {
                     this.props.onInputChange(e, 'phone', false);
@@ -61,9 +64,10 @@ class OperatorsModal extends Component {
               </div>
               
               <div className="input-field-group">
-                <Label for="dataPullFrequensyy">תדירות שליפת מידע</Label>
+                <Label for="dataPullFrequensy">תדירות שליפת מידע</Label>
                 <Input
                     id="dataPullFrequensy"
+                    className="large-input"
                     value={this.props.operator.dataPullFrequensy}
                     onChange={e => {
                     this.props.onInputChange(e, 'dataPullFrequensy', false);
@@ -76,6 +80,7 @@ class OperatorsModal extends Component {
                 <Input
                     type = "number"
                     id="numberOfPreviousStations"
+                    className="large-input"
                     value={(this.props.operator.numberOfPreviousStations) ? 
                         (this.props.operator.numberOfPreviousStations) : ""}
                     onChange={e => {
@@ -85,19 +90,19 @@ class OperatorsModal extends Component {
               </div>
               
               <div className="input-field-group">
-                <Label for="system">מערכת חיווי</Label>
+                <Label for="predictionSystem">מערכת חיזוי</Label>
                 <Input
                     type="select"
-                    id="system"
-                    value={this.props.operator.system}
+                    id="predictionSystem"
+                    value={this.props.operator.predictionSystem}
                     onChange={e => {
-                     this.props.onInputChange(e, 'system', false);
+                     this.props.onInputChange(e, 'predictionSystem', false);
                     }}
                 >
               <option defaultValue=""> Select </option>
-              <option value="1">חיווי 1</option>
-              <option value="2">חיווי 2</option>
-              <option value="3">חיווי 3</option>
+              <option value="1">חיזוי 1</option>
+              <option value="2">חיזוי 2</option>
+              <option value="3">חיזוי 3</option>
               </Input>
               </div>
                
@@ -122,6 +127,7 @@ class OperatorsModal extends Component {
             <Label for="addressForTravelQuery">כתובת לשליפת נסיעות פעילות מתוכננות</Label>
               <Input
                 id="addressForTravelQuery"
+                className="large-input"
                 value={this.props.operator.addressForTravelQuery}
                 onChange={e => {
                   this.props.onInputChange(e, 'addressForTravelQuery', false);
@@ -133,6 +139,7 @@ class OperatorsModal extends Component {
             <Label for="addressForHistoryQuery">כתובת לשאילת היסטוריה</Label>
               <Input
                 id="addressForHistoryQuery"
+                className="large-input"
                 value={this.props.operator.addressForHistoryQuery}
                 onChange={e => {
                   this.props.onInputChange(e, 'addressForHistoryQuery', false);

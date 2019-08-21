@@ -1,5 +1,5 @@
 .modal-dialog {
-    max-width: 800px;
+    max-width: 1198px;
 }
 
 .modal-header {
@@ -36,9 +36,12 @@
 
 .input-field-group > label {
     text-align: right;
-    max-width: 115px;
 }
 
 .modal-open .modal {
     overflow-y: hidden;
+}
+
+.large-input {
+    width: 353px;
 }

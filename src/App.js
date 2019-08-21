@@ -118,7 +118,7 @@ class App extends Component {
           }
           isOperatorModal={this.state.isOperatorModal}
           onInputChange={this.handleInputChange}
-          title={this.state.isInEditMode ? 'הוספת מפעיל' : 'עדכון מפעיל'}
+          title={this.state.isInEditMode ? 'עדכון מפעיל' : 'הוספת מפעיל'}
         />
       </div>
     );
