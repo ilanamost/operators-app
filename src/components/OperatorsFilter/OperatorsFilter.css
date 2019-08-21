@@ -1,3 +1,6 @@
+.search-container {
+    padding: 0 30px;
+}
 
 .operator-filter {
     display: flex;
@@ -8,8 +11,22 @@
 .operator-filter > input {
     text-align: right;
     padding-right: 5px;
+    width: 20%;
 }
 
 .operator-filter > button {
     margin: 5px;
+}
+
+.operator-filter > .btn {
+    border-radius: 3.25rem;
+    border: unset;
+  }
+  
+.operator-filter > .btn-secondary {
+    background-color: #46B7D3;
+  }
+  
+.operator-filter > .btn-secondary:hover {
+    background-color: #2f798b;
 }

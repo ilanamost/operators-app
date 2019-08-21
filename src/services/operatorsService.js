@@ -1,7 +1,3 @@
-import utilsService from "./utilsService";
-
-const FILE_NAME = "operators";
-
 function getEmptyOperator() {
     return {
         id: 1,

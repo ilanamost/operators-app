@@ -1,14 +1,7 @@
 import React from "react";
 
 import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Table,
-  FormGroup,
-  Label,
-  Input,
   Button,
   Collapse,
   Card,
@@ -34,10 +27,6 @@ const OperatorsTable = props => {
           <Collapse isOpen={props.rowIndex === i ? true : false}>
             <Card>
               <CardBody>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
                 <Button onClick={() => { props.onToggleOperatorModal(operator.id)}} >
                  עדכון פרטי המפעיל
                 </Button>
@@ -50,7 +39,8 @@ const OperatorsTable = props => {
         <td>
           <div className="option-container">
             <div
-              className={operator.isManageble ? "option-on" : "option-off"}
+              className={operator.isManageble ? "option option-on" : "option option-off"}
+              
             />
             <span>{operator.isManageble ? "פעיל" : "תקלה"}</span>
           </div>
@@ -58,7 +48,7 @@ const OperatorsTable = props => {
         <td>
           <div className="option-container">
             <div
-              className={operator.isFunctional ? "option-on" : "option-off"}
+              className={operator.isFunctional ? "option option-on" : "option option-off"}
             />
             <span>{operator.isFunctional ? "פעיל" : "תקלה"}</span>
           </div>
