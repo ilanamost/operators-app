@@ -77,9 +77,9 @@ thead > tr {
   height: 100%;
   cursor: default;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 40% 60%;
   font-size: 1vw;
+  grid-column-gap: 1vw;
 }
 
 .card-body > .form-group > .btn {
@@ -198,6 +198,7 @@ thead > tr {
 .second-row-first {
   grid-row: 2;
   grid-column: 1;
+  width: 15vw;
 }
 
 .second-row-second {
