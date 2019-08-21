@@ -47,7 +47,7 @@ class App extends Component {
     }
     this.setState({
       isOperatorModal: !this.state.isOperatorModal,
-      operator: id ? operatorToEdit : operator,
+      operator: id ? operatorToEdit : operatorsService.getEmptyOperator(),
       isInEditMode: id ? true : false
     });
   };
