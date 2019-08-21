@@ -15,8 +15,13 @@
     display: flex;
 }
 
+.modal-title {
+    font-size: 1.5vw;
+}
+
 .modal-content {
     direction: rtl;
+    font-size: 1vw;
 }
 
 .modal-footer {
@@ -28,14 +33,15 @@
     margin-left: .25rem;
 }
 
-.input-field-group {
+.modal-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     margin: 0 0 2% 10%;
 }
 
-.input-field-group > label {
+.modal-group > label {
     text-align: right;
+    max-width: 120px;
 }
 
 .modal-open .modal {
@@ -44,4 +50,8 @@
 
 .large-input {
     width: 353px;
+}
+
+.modal-dialog {
+    max-width: 890px;
 }

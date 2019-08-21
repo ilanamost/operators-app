@@ -69,14 +69,14 @@ const OperatorsTable = props => {
                 </FormGroup>
                  
                  <FormGroup className="second-row-second">
-                 <div className="input-field-group">
+                 <div className="table-group">
                 <Label for="dataPullFrequensy">תדירות שליפת המידע</Label>
                 <Input
                     id="dataPullFrequensy"
                     value={operator.dataPullFrequensy} disabled/>
                 </div>
 
-                <div className="input-field-group">
+                <div className="table-group">
                   <Label for="numberOfPreviousStations">מס' תחנות קודמות לשליפה</Label>
                   <Input
                    type="number"
@@ -86,7 +86,7 @@ const OperatorsTable = props => {
                  </FormGroup>
 
                 <FormGroup className="second-row-third">
-                 <div className="input-field-group">
+                 <div className="table-group">
                 <Label for="predictionSystem">מערכת חיזוי</Label>
                 <Input
                     type="select"
@@ -97,7 +97,7 @@ const OperatorsTable = props => {
               </Input>
                 </div>
 
-                <div className="input-field-group">
+                <div className="table-group">
                   <Label for="numberOfPreviousStations">גרסת פרוטוקול</Label>
                   <Input
                     type="select"
@@ -110,7 +110,7 @@ const OperatorsTable = props => {
                  </FormGroup>
 
                  <FormGroup className="second-row-fourth">
-                 <div className="input-field-group-column">
+                 <div className="table-group-column">
                    <Label>כתובת לשאילתת נסיעות</Label>
                    <Label>{operator.addressForTravelQuery}</Label>
                  </div>

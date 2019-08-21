@@ -25,8 +25,8 @@ class OperatorsModal extends Component {
           </ModalHeader>
           <ModalBody>
             <FormGroup>
-                <div className="input-field-group">
-                <Label for="operatorsNumber">מספר מפעילים במערכת</Label>
+                <div className="modal-group">
+                <Label for="operatorsNumber">מספר המפעילים במערכת</Label>
                 <Input
                     type = "number"
                     id="operatorsNumber"
@@ -39,7 +39,7 @@ class OperatorsModal extends Component {
                 />
                 </div>
             
-               <div className="input-field-group">
+               <div className="modal-group">
                 <Label for="firstName">שם פרטי</Label>
                 <Input
                     id="firstName"
@@ -51,7 +51,7 @@ class OperatorsModal extends Component {
                 />
                </div>
               
-              <div className="input-field-group">
+              <div className="modal-group">
                 <Label for="phone">טלפון</Label>
                 <Input
                     id="phone"
@@ -63,7 +63,7 @@ class OperatorsModal extends Component {
                 />
               </div>
               
-              <div className="input-field-group">
+              <div className="modal-group">
                 <Label for="dataPullFrequensy">תדירות שליפת מידע</Label>
                 <Input
                     id="dataPullFrequensy"
@@ -75,7 +75,7 @@ class OperatorsModal extends Component {
                 />
               </div>
               
-              <div className="input-field-group">
+              <div className="modal-group">
                 <Label for="numberOfPreviousStations">מספר תחנות קודמות לשליפה</Label>
                 <Input
                     type = "number"
@@ -89,7 +89,7 @@ class OperatorsModal extends Component {
                 />
               </div>
               
-              <div className="input-field-group">
+              <div className="modal-group">
                 <Label for="predictionSystem">מערכת חיזוי</Label>
                 <Input
                     type="select"
@@ -106,7 +106,7 @@ class OperatorsModal extends Component {
               </Input>
               </div>
                
-            <div className="input-field-group"> 
+            <div className="modal-group"> 
                 <Label for="protocolVersion">גרסת פרוטוקול</Label>
                 <Input
                     type="select"
@@ -123,7 +123,7 @@ class OperatorsModal extends Component {
              </Input>
             </div>
               
-            <div className="input-field-group">
+            <div className="modal-group">
             <Label for="addressForTravelQuery">כתובת לשליפת נסיעות פעילות מתוכננות</Label>
               <Input
                 id="addressForTravelQuery"
@@ -135,7 +135,7 @@ class OperatorsModal extends Component {
               />
             </div>
             
-            <div className="input-field-group">
+            <div className="modal-group">
             <Label for="addressForHistoryQuery">כתובת לשאילת היסטוריה</Label>
               <Input
                 id="addressForHistoryQuery"
@@ -149,7 +149,7 @@ class OperatorsModal extends Component {
             </FormGroup>
 
             <FormGroup>
-              <div className="input-field-group">
+              <div className="modal-group">
                 <Label for="operatorName">שם מפעיל</Label>
                 <Input
                 id="operatorName"
@@ -160,7 +160,7 @@ class OperatorsModal extends Component {
               />
             </div>
              
-            <div className="input-field-group">
+            <div className="modal-group">
             <Label for="lastName">שם משפחה</Label>
               <Input
                 id="lastName"
@@ -171,7 +171,7 @@ class OperatorsModal extends Component {
               />
             </div>
               
-            <div className="input-field-group">
+            <div className="modal-group">
                <Label for="email">דואר אלקטרוני</Label>
                <Input
                 id="email"
