@@ -30,7 +30,8 @@ class App extends Component {
     operator: operatorsService.getEmptyOperator(),
     openRowIndex: -1,
     isInEditMode: false,
-    dropdownOpen: false
+    dropdownOpen: false,
+    pagination: {currPage: 0, rowsNumber: 10}
   };
 
   componentDidMount() {
