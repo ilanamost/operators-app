@@ -31,7 +31,11 @@ class App extends Component {
     openRowIndex: -1,
     isInEditMode: false,
     dropdownOpen: false,
-    pagination: {currPage: 0, rowsNumber: 10}
+    pagination: {
+      currPage: 1, 
+      rowsNumber: 10,
+      numberOfPages: 0
+    }
   };
 
   componentDidMount() {
@@ -40,6 +44,17 @@ class App extends Component {
         operators: res.data,
         filteredOperators: res.data,
         operator: operatorsService.getEmptyOperator()
+      });
+
+      const { operators, pagination } = this.state;
+      const numberOfPages = operators.length/pagination.rowsNumber;
+  
+      this.setState({
+        pagination: {
+          currPage: 1, 
+          rowsNumber: 10, 
+          numberOfPages: numberOfPages 
+        }
       });
     });
   }
@@ -92,7 +107,6 @@ class App extends Component {
     let { operator } = this.state;
     operator[propName] = isNumber ? +e.target.value : e.target.value;
     this.setState({ operator });
-    console.log("operators", this.state.operators);
   };
 
   toggleRow = i => {
@@ -109,6 +123,8 @@ class App extends Component {
   };
 
   render() {
+    const { pagination } = this.state;
+
     return (
       <div className="App">
         <div className="search-container">
@@ -144,8 +160,8 @@ class App extends Component {
 
               <FormGroup className="page-section">
                 <Label> Page </Label>
-                <Input disabled />
-                <Label> of 1 </Label>
+                <Input disabled value={ pagination.currPage }/>
+                <Label> of { pagination.numberOfPages } </Label>
               </FormGroup>
             </div>
             <Button> Pervious </Button>
