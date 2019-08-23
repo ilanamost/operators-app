@@ -8,6 +8,18 @@ import OperatorsModal from "./components/OperatorsModal/OperatorsModal";
 import utilsService from "./services/utilsService";
 import operatorsService from "./services/operatorsService";
 
+import {
+  Table,
+  Button,
+  Label,
+  Input,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  FormGroup
+} from "reactstrap";
+
 const FILE_NAME = "operators";
 
 class App extends Component {
@@ -17,7 +29,8 @@ class App extends Component {
     isOperatorModal: false,
     operator: operatorsService.getEmptyOperator(),
     openRowIndex: -1,
-    isInEditMode: false
+    isInEditMode: false,
+    dropdownOpen: false
   };
 
   componentDidMount() {
@@ -87,6 +100,13 @@ class App extends Component {
     this.setState({ openRowIndex });
   };
 
+   toggleDropdown = () => {
+    let { dropdownOpen } = this.state;
+    this.setState({ 
+      dropdownOpen :!dropdownOpen 
+    });
+   }
+
   render() {
     return (
       <div className="App">
@@ -116,6 +136,31 @@ class App extends Component {
           onInputChange={this.handleInputChange}
           title={this.state.isInEditMode ? 'עדכון מפעיל' : 'הוספת מפעיל'}
         />
+
+        <div className="pagination-container"> 
+          <Button> Next </Button>
+          <div className="middle-section">
+          <Dropdown className="dropdown" 
+          isOpen={this.state.dropdownOpen} 
+          toggle={this.toggleDropdown}>
+          <DropdownToggle caret>
+            rows 10
+          </DropdownToggle>
+          <DropdownMenu right>
+          <DropdownItem header>Header</DropdownItem>
+          <DropdownItem disabled>Action</DropdownItem>
+          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem divider/>
+          <DropdownItem>Another Action</DropdownItem>
+          </DropdownMenu>
+          </Dropdown>
+
+            <FormGroup className="page-section">
+              <Label> Page </Label><Input disabled></Input><Label> of 1 </Label>
+            </FormGroup>
+          </div>
+          <Button> Pervious </Button>
+        </div>
       </div>
     );
   }
