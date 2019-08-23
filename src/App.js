@@ -135,11 +135,9 @@ class App extends Component {
               >
                 <DropdownToggle caret>rows 10</DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem header>Header</DropdownItem>
-                  <DropdownItem disabled>Action</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Another Action</DropdownItem>
+                  <DropdownItem>rows 10</DropdownItem>
+                  <DropdownItem>rows 5</DropdownItem>
+                  <DropdownItem>rows 2</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
 
