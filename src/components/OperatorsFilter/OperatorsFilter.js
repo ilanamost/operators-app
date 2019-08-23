@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button } from "reactstrap";
+import { Button, Input } from "reactstrap";
 
 import './OperatorsFilter.css';
 
@@ -24,7 +24,7 @@ class OperatorsFilter extends Component {
     render () {
         return (
             <div className="operator-filter">
-                <input
+                <Input
                     placeholder="חיפוש"
                     value={this.state.term}
                     onChange={this.onInputChange} />

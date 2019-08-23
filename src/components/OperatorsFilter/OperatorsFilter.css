@@ -6,12 +6,16 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin: 15px 0 22px 0;
 }
 
 .operator-filter > input {
     text-align: right;
     padding-right: 5px;
     width: 31%;
+    color: #cfd5db;
+    border-radius: 5px;
+    border: 1.5px solid #cfd5db;
 }
 
 .operator-filter > button {
