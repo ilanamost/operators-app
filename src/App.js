@@ -122,6 +122,18 @@ class App extends Component {
     });
   };
 
+  selectValue(rowsNumber) {
+    const { pagination } = this.state;
+
+    this.setState({
+      pagination: {
+        currPage: pagination.currPage, 
+        rowsNumber: rowsNumber, 
+        numberOfPages: pagination.numberOfPages 
+      }
+    });
+  }
+
   render() {
     const { pagination } = this.state;
 
@@ -150,11 +162,22 @@ class App extends Component {
                 isOpen={this.state.dropdownOpen}
                 toggle={this.toggleDropdown}
               >
-                <DropdownToggle caret>rows 10</DropdownToggle>
+                <DropdownToggle caret> rows { pagination.rowsNumber} </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>rows 10</DropdownItem>
-                  <DropdownItem>rows 5</DropdownItem>
-                  <DropdownItem>rows 2</DropdownItem>
+                  <DropdownItem onClick={(e) => {
+                    e.stopPropagation();
+                    this.selectValue(10);
+                    }}>rows 10</DropdownItem>
+
+                    <DropdownItem onClick={(e) => {
+                    e.stopPropagation();
+                    this.selectValue(5);
+                    }}>rows 5</DropdownItem>
+
+                    <DropdownItem onClick={(e) => {
+                    e.stopPropagation();
+                    this.selectValue(2);
+                    }}>rows 2</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
 
