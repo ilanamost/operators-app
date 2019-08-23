@@ -48,17 +48,28 @@ class App extends Component {
 
       const { operators, pagination } = this.state;
       const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
+      const rowsNumber = 10;
+      const filteredOperators = 
+      this.getOperatorsPerPage(
+        operators, 
+        (pagination.currPage - 1)*rowsNumber, 
+        rowsNumber*pagination.currPage);
   
       this.setState({
         pagination: {
           currPage: 1, 
-          rowsNumber: 10, 
-          numberOfPages: numberOfPages 
+          rowsNumber: rowsNumber, 
+          numberOfPages: numberOfPages,
+          filteredOperators: filteredOperators 
         }
       });
     });
   }
 
+  getOperatorsPerPage = (operators, startIndex, rowsNumber) => {
+    return operators.slice(startIndex, rowsNumber);
+  }
+ 
   operatorSearch = term => {
     const operators = operatorsService.getOperators(this.state.operators, term);
     this.setState({
@@ -125,18 +136,24 @@ class App extends Component {
   selectValue = (rowsNumber) => {
     const { operators, pagination } = this.state;
     const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
+    const filteredOperators = 
+    this.getOperatorsPerPage(
+      operators, 
+      (pagination.currPage - 1)*rowsNumber, 
+      rowsNumber*pagination.currPage);
 
     this.setState({
       pagination: {
         currPage: pagination.currPage, 
         rowsNumber: rowsNumber, 
-        numberOfPages: numberOfPages 
+        numberOfPages: numberOfPages,
+        filteredOperators: filteredOperators
       }
     });
   }
 
   changeCurrPage = (direction) => {
-    const { pagination } = this.state;
+    const { operators, pagination } = this.state;
     let currPage = pagination.currPage;
     
     switch(direction) {
@@ -152,17 +169,24 @@ class App extends Component {
         break;
     }
 
+    const filteredOperators = 
+    this.getOperatorsPerPage(
+      operators, 
+      (currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*currPage);
+
     this.setState({
       pagination: {
         currPage: currPage, 
         rowsNumber: pagination.rowsNumber, 
-        numberOfPages: pagination.numberOfPages 
+        numberOfPages: pagination.numberOfPages,
+        filteredOperators: filteredOperators 
       }
     });
   }
 
   getNumOfPages = (operatorsLength, rowsNumber) => {
-    return  operatorsLength/rowsNumber;
+    return  operatorsLength / rowsNumber;
   }
 
   render() {
