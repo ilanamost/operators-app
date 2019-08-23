@@ -24,8 +24,10 @@ h3 {
 .pagination-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  border: 2px solid #e6e6e6;
+  border: 2px solid #dbdbdb;
   height: 60px;
+  border-top: 1px solid #dbdbdb;
+  box-shadow: -1px 0px 20px 7px #dbdbdb;
 }
 
 .middle-section {

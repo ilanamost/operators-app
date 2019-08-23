@@ -34,7 +34,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    utilsService.loadJSON(FILE_NAME).then((res) => {
+    utilsService.loadJSON(FILE_NAME).then(res => {
       this.setState({
         operators: res.data,
         filteredOperators: res.data,
@@ -46,8 +46,8 @@ class App extends Component {
   operatorSearch = term => {
     const operators = operatorsService.getOperators(this.state.operators, term);
     this.setState({
-          filteredOperators: operators
-      });
+      filteredOperators: operators
+    });
   };
 
   toggleOperatorModal = id => {
@@ -91,7 +91,7 @@ class App extends Component {
     let { operator } = this.state;
     operator[propName] = isNumber ? +e.target.value : e.target.value;
     this.setState({ operator });
-    console.log('operators', this.state.operators);
+    console.log("operators", this.state.operators);
   };
 
   toggleRow = i => {
@@ -100,12 +100,12 @@ class App extends Component {
     this.setState({ openRowIndex });
   };
 
-   toggleDropdown = () => {
+  toggleDropdown = () => {
     let { dropdownOpen } = this.state;
-    this.setState({ 
-      dropdownOpen :!dropdownOpen 
+    this.setState({
+      dropdownOpen: !dropdownOpen
     });
-   }
+  };
 
   render() {
     return (
@@ -124,6 +124,33 @@ class App extends Component {
             rowIndex={this.state.openRowIndex}
             onToggleOperatorModal={this.toggleOperatorModal}
           />
+
+          <div className="pagination-container">
+            <Button> Next </Button>
+            <div className="middle-section">
+              <Dropdown
+                className="dropdown"
+                isOpen={this.state.dropdownOpen}
+                toggle={this.toggleDropdown}
+              >
+                <DropdownToggle caret>rows 10</DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem header>Header</DropdownItem>
+                  <DropdownItem disabled>Action</DropdownItem>
+                  <DropdownItem>Another Action</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Another Action</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+
+              <FormGroup className="page-section">
+                <Label> Page </Label>
+                <Input disabled />
+                <Label> of 1 </Label>
+              </FormGroup>
+            </div>
+            <Button> Pervious </Button>
+          </div>
         </div>
 
         <OperatorsModal
@@ -134,33 +161,8 @@ class App extends Component {
           }
           isOperatorModal={this.state.isOperatorModal}
           onInputChange={this.handleInputChange}
-          title={this.state.isInEditMode ? 'עדכון מפעיל' : 'הוספת מפעיל'}
+          title={this.state.isInEditMode ? "עדכון מפעיל" : "הוספת מפעיל"}
         />
-
-        <div className="pagination-container"> 
-          <Button> Next </Button>
-          <div className="middle-section">
-          <Dropdown className="dropdown" 
-          isOpen={this.state.dropdownOpen} 
-          toggle={this.toggleDropdown}>
-          <DropdownToggle caret>
-            rows 10
-          </DropdownToggle>
-          <DropdownMenu right>
-          <DropdownItem header>Header</DropdownItem>
-          <DropdownItem disabled>Action</DropdownItem>
-          <DropdownItem>Another Action</DropdownItem>
-          <DropdownItem divider/>
-          <DropdownItem>Another Action</DropdownItem>
-          </DropdownMenu>
-          </Dropdown>
-
-            <FormGroup className="page-section">
-              <Label> Page </Label><Input disabled></Input><Label> of 1 </Label>
-            </FormGroup>
-          </div>
-          <Button> Pervious </Button>
-        </div>
       </div>
     );
   }
