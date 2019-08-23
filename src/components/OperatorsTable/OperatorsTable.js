@@ -20,7 +20,7 @@ const OperatorsTable = props => {
     return (
       <tr
         key={operator.id}
-        className={props.rowIndex === i ? "open-row" : "closed-row"}
+        className={`table-row ${props.rowIndex === i ? "open" : "closed"}`}
       >
         <td
           className="arrow"

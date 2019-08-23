@@ -78,6 +78,7 @@ class App extends Component {
     let { operator } = this.state;
     operator[propName] = isNumber ? +e.target.value : e.target.value;
     this.setState({ operator });
+    console.log('operators', this.state.operators);
   };
 
   toggleRow = i => {
