@@ -47,7 +47,7 @@ class App extends Component {
       });
 
       const { operators, pagination } = this.state;
-      const numberOfPages = operators.length/pagination.rowsNumber;
+      const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
   
       this.setState({
         pagination: {
@@ -122,16 +122,47 @@ class App extends Component {
     });
   };
 
-  selectValue(rowsNumber) {
-    const { pagination } = this.state;
+  selectValue = (rowsNumber) => {
+    const { operators, pagination } = this.state;
+    const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
 
     this.setState({
       pagination: {
         currPage: pagination.currPage, 
         rowsNumber: rowsNumber, 
+        numberOfPages: numberOfPages 
+      }
+    });
+  }
+
+  changeCurrPage = (direction) => {
+    const { pagination } = this.state;
+    let currPage = pagination.currPage;
+    
+    switch(direction) {
+      case 'next':
+        if(currPage < pagination.numberOfPages) {
+          currPage++;
+        }
+        break;
+      case 'pervious':
+        if(currPage > 1) {
+          currPage--;
+        }
+        break;
+    }
+
+    this.setState({
+      pagination: {
+        currPage: currPage, 
+        rowsNumber: pagination.rowsNumber, 
         numberOfPages: pagination.numberOfPages 
       }
     });
+  }
+
+  getNumOfPages = (operatorsLength, rowsNumber) => {
+    return  operatorsLength/rowsNumber;
   }
 
   render() {
@@ -155,7 +186,10 @@ class App extends Component {
           />
 
           <div className="pagination-container">
-            <Button> Next </Button>
+            <Button onClick={(e) => {
+                e.stopPropagation();
+                this.changeCurrPage('next');
+              }}> Next </Button>
             <div className="middle-section">
               <Dropdown
                 className="dropdown"
@@ -187,7 +221,10 @@ class App extends Component {
                 <Label> of { pagination.numberOfPages } </Label>
               </FormGroup>
             </div>
-            <Button> Pervious </Button>
+            <Button  onClick={(e) => {
+              e.stopPropagation();
+              this.changeCurrPage('pervious');
+            }}> Pervious </Button>
           </div>
         </div>
 
