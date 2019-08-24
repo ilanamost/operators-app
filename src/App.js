@@ -9,18 +9,6 @@ import Pagination from "./components/Pagination/Pagination";
 import utilsService from "./services/utilsService";
 import operatorsService from "./services/operatorsService";
 
-// import {
-//   Table,
-//   Button,
-//   Label,
-//   Input,
-//   Dropdown,
-//   DropdownToggle,
-//   DropdownMenu,
-//   DropdownItem,
-//   FormGroup
-// } from "reactstrap";
-
 const FILE_NAME = "operators";
 
 class App extends Component {
@@ -147,9 +135,9 @@ class App extends Component {
       pagination: {
         currPage: pagination.currPage, 
         rowsNumber: rowsNumber, 
-        numberOfPages: numberOfPages,
-        filteredOperators: filteredOperators
-      }
+        numberOfPages: numberOfPages
+      },
+      filteredOperators: filteredOperators
     });
   }
 
@@ -180,9 +168,9 @@ class App extends Component {
       pagination: {
         currPage: currPage, 
         rowsNumber: pagination.rowsNumber, 
-        numberOfPages: pagination.numberOfPages,
-        filteredOperators: filteredOperators 
-      }
+        numberOfPages: pagination.numberOfPages
+      },
+      filteredOperators: filteredOperators 
     });
   }
 

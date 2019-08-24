@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 import {
     Table,
@@ -10,7 +10,7 @@ import {
     DropdownMenu,
     DropdownItem,
     FormGroup
-  } from "reactstrap";
+} from "reactstrap";
 
 import "./Pagination.css";
 
