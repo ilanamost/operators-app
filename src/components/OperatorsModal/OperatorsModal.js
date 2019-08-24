@@ -26,7 +26,7 @@ class OperatorsModal extends Component {
         required: 'שדה חובה',
         default: 'הולדיציה נכשלה'
       },
-    })
+    });
   }
 
   submitForm() {
@@ -36,6 +36,11 @@ class OperatorsModal extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
+  }
+
+  cancelSubmit(){
+    this.validator.hideMessages();
+    this.props.onToggleOperatorModal();
   }
 
   render() {
@@ -236,7 +241,7 @@ class OperatorsModal extends Component {
             </Button>
                 <Button
                   color="secondary"
-                  onClick={() => this.props.onToggleOperatorModal()}
+                  onClick={() => this.cancelSubmit()}
                 >
                   ביטול
             </Button>
