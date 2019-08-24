@@ -31,7 +31,6 @@ class App extends Component {
     utilsService.loadJSON(FILE_NAME).then(res => {
       this.setState({
         operators: res.data,
-        filteredOperators: res.data,
         operator: operatorsService.getEmptyOperator()
       });
 
@@ -50,7 +49,7 @@ class App extends Component {
           rowsNumber: rowsNumber, 
           numberOfPages: numberOfPages
         },
-        filteredOperators: filteredOperators 
+        filteredOperators: filteredOperators.reverse() 
       });
     });
   }
@@ -69,7 +68,7 @@ class App extends Component {
       (pagination.currPage - 1)*pagination.rowsNumber, 
       pagination.rowsNumber*pagination.currPage);
     this.setState({
-      filteredOperators: filteredOperators
+      filteredOperators: filteredOperators.reverse() 
     });
   };
 
@@ -99,7 +98,7 @@ class App extends Component {
 
     this.setState({
       operators: newOperators,
-      filteredOperators: filteredOperators,
+      filteredOperators: filteredOperators.reverse(),
       isOperatorModal: false,
       operator: operatorsService.getEmptyOperator(),
       pagination: {
@@ -121,7 +120,7 @@ class App extends Component {
 
     this.setState({
       operators: newOperators,
-      filteredOperators: filteredOperators,
+      filteredOperators: filteredOperators.reverse(),
       isOperatorModal: false,
       operator: operatorsService.getEmptyOperator(),
       openRowIndex: -1
@@ -162,7 +161,7 @@ class App extends Component {
         rowsNumber: rowsNumber, 
         numberOfPages: numberOfPages
       },
-      filteredOperators: filteredOperators
+      filteredOperators: filteredOperators.reverse()
     });
   }
 
@@ -197,7 +196,7 @@ class App extends Component {
         rowsNumber: pagination.rowsNumber, 
         numberOfPages: pagination.numberOfPages
       },
-      filteredOperators: filteredOperators 
+      filteredOperators: filteredOperators.reverse() 
     });
   }
 

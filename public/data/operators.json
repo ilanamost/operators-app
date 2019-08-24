@@ -64,7 +64,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 4,
     "operatorName": "מפעיל 4",
     "isManageble": true,
@@ -86,7 +86,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 5,
     "operatorName": "מפעיל 5",
     "isManageble": true,
@@ -108,7 +108,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 6,
     "operatorName": "מפעיל 6",
     "isManageble": false,
@@ -130,7 +130,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 7,
     "operatorName": "מפעיל 7",
     "isManageble": true,
@@ -152,7 +152,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 8,
     "operatorName": "מפעיל 8",
     "isManageble": true,
@@ -174,7 +174,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 9,
     "operatorName": "מפעיל 9",
     "isManageble": false,
@@ -196,7 +196,7 @@
     "addressForHistoryQuery":  "www.google.com"
   },
 
-   {
+  {
     "id": 10,
     "operatorName": "מפעיל 10",
     "isManageble": true,
