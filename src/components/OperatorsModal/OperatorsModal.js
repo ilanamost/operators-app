@@ -128,7 +128,7 @@ class OperatorsModal extends Component {
                     />
                   </div>
 
-                  <div className="modal-group">
+                  <div className="modal-group select-group">
                     <Label for="predictionSystem">מערכת חיזוי</Label>
                     <Input
                       type="select"
@@ -146,22 +146,24 @@ class OperatorsModal extends Component {
                     </Input>
                   </div>
 
-                  <div className="modal-group">
+                  <div className="modal-group select-group">
                     <Label for="protocolVersion">גרסת פרוטוקול</Label>
-                    <Input
-                      type="select"
-                      id="protocolVersion"
-                      name="protocolVersion"
-                      value={this.props.operator.protocolVersion}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'protocolVersion', false);
-                      }}
-                    >
-                      <option defaultValue=""> Select </option>
-                      <option value="1">פרוטוקול 1</option>
-                      <option value="2">פרוטוקול 2</option>
-                      <option value="3">פרוטוקול 3</option>
+                    <div>
+                      <Input
+                        type="select"
+                        id="protocolVersion"
+                        name="protocolVersion"
+                        value={this.props.operator.protocolVersion}
+                        onChange={e => {
+                         this.props.onInputChange(e, 'protocolVersion', false);
+                        }}
+                      >
+                        <option defaultValue=""> Select </option>
+                        <option value="1">פרוטוקול 1</option>
+                        <option value="2">פרוטוקול 2</option>
+                        <option value="3">פרוטוקול 3</option>
                     </Input>
+                    </div>
                   </div>
 
                   <div className="modal-group">

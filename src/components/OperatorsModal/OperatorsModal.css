@@ -41,7 +41,11 @@
 
 .modal-group > label {
     text-align: right;
-    max-width: 120px;
+    max-width: 8vw;
+}
+
+.select-group {
+    grid-template-columns: 2fr 1fr;
 }
 
 .modal-open .modal {
@@ -49,7 +53,7 @@
 }
 
 .large-input {
-    width: 353px;
+    width: 15vw;
 }
 
 .modal-dialog {
