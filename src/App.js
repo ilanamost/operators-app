@@ -48,9 +48,9 @@ class App extends Component {
         pagination: {
           currPage: 1, 
           rowsNumber: rowsNumber, 
-          numberOfPages: numberOfPages,
-          filteredOperators: filteredOperators 
-        }
+          numberOfPages: numberOfPages
+        },
+        filteredOperators: filteredOperators 
       });
     });
   }
@@ -80,26 +80,44 @@ class App extends Component {
   };
 
   addOperator = () => {
-    let { operators, operator } = this.state;
+    let { operators, operator, pagination } = this.state;
     const newOperators = operatorsService.addOperator(operators, operator);
+
+    const filteredOperators = this.getOperatorsPerPage(
+      newOperators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
+
+    const numberOfPages =  this.getNumOfPages(newOperators.length , pagination.rowsNumber);
 
     this.setState({
       operators: newOperators,
-      filteredOperators: newOperators,
+      filteredOperators: filteredOperators,
       isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator()
+      operator: operatorsService.getEmptyOperator(),
+      pagination: {
+        numberOfPages: numberOfPages,
+        currPage: pagination.currPage, 
+        rowsNumber: pagination.rowsNumber
+      }
     });
   };
 
   updateOperator = () => {
-    let { operators, operator } = this.state;
+    let { operators, operator, pagination } = this.state;
     const newOperators = operatorsService.updateOperator(operators, operator);
+
+    const filteredOperators = this.getOperatorsPerPage(
+      newOperators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
 
     this.setState({
       operators: newOperators,
-      filteredOperators: newOperators,
+      filteredOperators: filteredOperators,
       isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator()
+      operator: operatorsService.getEmptyOperator(),
+      openRowIndex: -1
     });
   };
 
@@ -175,7 +193,7 @@ class App extends Component {
   }
 
   getNumOfPages = (operatorsLength, rowsNumber) => {
-    return  operatorsLength / rowsNumber;
+    return  Math.ceil(operatorsLength / rowsNumber);
   }
 
   render() {
