@@ -39,7 +39,7 @@ function getOperatorById(operators, id) {
     return operator.id === id;
   });
 
-  return operatorToEdit;
+  return {...operatorToEdit};
 }
 
 function addOperator(operators, operator) {
