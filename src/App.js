@@ -22,7 +22,7 @@ class App extends Component {
     dropdownOpen: false,
     pagination: {
       currPage: 1, 
-      rowsNumber: 10,
+      rowsNumber: 5,
       numberOfPages: 0
     }
   };
@@ -37,7 +37,7 @@ class App extends Component {
 
       const { operators, pagination } = this.state;
       const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
-      const rowsNumber = 10;
+      const rowsNumber = 5;
       const filteredOperators = 
       this.getOperatorsPerPage(
         operators, 
@@ -159,23 +159,25 @@ class App extends Component {
     });
   }
 
+  getCurrPage = (direction, currPage, numberOfPages) => {
+    switch(direction) {
+      case 'next':
+        if(currPage < numberOfPages) {
+          return ++currPage;
+        }
+        return currPage;
+      case 'pervious':
+        if(currPage > 1) {
+          return --currPage;
+        }
+        return currPage;
+    }
+  }
+
   changeCurrPage = (direction) => {
     const { operators, pagination } = this.state;
     let currPage = pagination.currPage;
-    
-    switch(direction) {
-      case 'next':
-        if(currPage < pagination.numberOfPages) {
-          currPage++;
-        }
-        break;
-      case 'pervious':
-        if(currPage > 1) {
-          currPage--;
-        }
-        break;
-    }
-
+    currPage = this.getCurrPage(direction, currPage, pagination.numberOfPages);
     const filteredOperators = 
     this.getOperatorsPerPage(
       operators, 
