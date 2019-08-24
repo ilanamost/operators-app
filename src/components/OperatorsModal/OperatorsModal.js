@@ -12,7 +12,7 @@ import {
   Input
 } from "reactstrap";
 
-import "./OperatorsModal.css";
+import "./OperatorsModal.scss";
 
 class OperatorsModal extends Component {
   constructor(props) {
@@ -130,20 +130,23 @@ class OperatorsModal extends Component {
 
                   <div className="modal-group select-group">
                     <Label for="predictionSystem">מערכת חיזוי</Label>
-                    <Input
-                      type="select"
-                      id="predictionSystem"
-                      name="predictionSystem"
-                      value={this.props.operator.predictionSystem}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'predictionSystem', false);
-                      }}
-                    >
-                      <option defaultValue=""> Select </option>
-                      <option value="1">חיזוי 1</option>
-                      <option value="2">חיזוי 2</option>
-                      <option value="3">חיזוי 3</option>
-                    </Input>
+                    <div>
+                      <Input
+                        type="select"
+                        id="predictionSystem"
+                        name="predictionSystem"
+                        className="select-control"
+                        value={this.props.operator.predictionSystem}
+                        onChange={e => {
+                          this.props.onInputChange(e, 'predictionSystem', false);
+                        }}
+                      >
+                        <option defaultValue=""> Select </option>
+                        <option value="1">חיזוי 1</option>
+                        <option value="2">חיזוי 2</option>
+                        <option value="3">חיזוי 3</option>
+                     </Input>
+                    </div>
                   </div>
 
                   <div className="modal-group select-group">
@@ -153,6 +156,7 @@ class OperatorsModal extends Component {
                         type="select"
                         id="protocolVersion"
                         name="protocolVersion"
+                        className="select-control"
                         value={this.props.operator.protocolVersion}
                         onChange={e => {
                          this.props.onInputChange(e, 'protocolVersion', false);

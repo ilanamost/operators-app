@@ -1,0 +1,76 @@
+.modal-dialog {
+    max-width: 1198px;
+
+    .modal-content{
+        direction: rtl;
+        font-size: 1vw;
+
+        .modal-header {
+            align-items: center;
+            padding: 0 1rem;
+    
+            .close {
+                margin: unset; 
+            }
+
+            .modal-title {
+                font-size: 1.5vw;
+            }
+        }
+    
+        .modal-body {
+            display: flex;
+
+            .modal-group {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 0 0 2% 10%;
+
+                label {
+                    text-align: right;
+                    max-width: 8vw;
+                }
+            }
+
+            .validation-label {
+                text-align: left;
+                margin-left: 10%;
+                color: red;
+                font-weight: bold;
+            }
+        }
+
+        .modal-footer {
+            justify-content: flex-start;
+            border-top: unset;
+
+            :not(:last-child) {
+                margin-left: .25rem;
+            }
+        }
+    }
+
+}
+
+.select-group {
+    grid-template-columns: 2fr 1fr;
+}
+
+.modal-open .modal {
+    overflow-y: hidden;
+}
+
+.large-input {
+    width: 15vw;
+}
+
+@media(max-width: 1679px) {
+    .modal-dialog {
+        max-width: 890px;
+    }
+  }
+
+
+.select-control {
+    width: 7.5vw;
+}
