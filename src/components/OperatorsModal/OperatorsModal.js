@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Formik } from 'formik';
+import { operatorsValidationSchema } from "../../schema/operatorsValidationSchema";
+import operatorsService from "../../services/operatorsService";
 
 import {
   Modal,
@@ -14,8 +17,53 @@ import {
 import "./OperatorsModal.css";
 
 class OperatorsModal extends Component {
+
+  generateInitialValues = () => {
+		return {
+      operatorsNumber: 0,
+      firstName: '',
+      phone: '',
+      dataPullFrequensy:'',
+      numberOfPreviousStations: 0,
+      predictionSystem: '',
+      protocolVersion: '',
+      addressForTravelQuery: '',
+      addressForHistoryQuery: '',
+      operatorName: '',
+      lastName: '',
+      email: ''
+		};
+  };
+
+  handleSubmit = (values) => {
+    const { onAddOperator } = this.props;
+
+    onAddOperator({
+      operatorsNumber: values.operatorsNumber,
+      firstName: values.firstName,
+      phone: values.phone,
+      dataPullFrequensy: values.dataPullFrequensy,
+      numberOfPreviousStations: values.numberOfPreviousStations,
+      predictionSystem: values.predictionSystem,
+      protocolVersion: values.protocolVersion,
+      addressForTravelQuery: values.addressForTravelQuery,
+      addressForHistoryQuery: values.addressForHistoryQuery,
+      operatorName: values.operatorName,
+      lastName: values.lastName,
+      email: values.email
+    });
+  }
+  
+
   render() {
     return (
+      <Formik 
+        initialValues={this.generateInitialValues()}
+        validationSchema={operatorsValidationSchema}
+        onSubmit={() => 
+          {console.log("sudmitted without errors")}
+          }>
+      {props => (
       <div className="operator-modal">
         <Modal
           isOpen={this.props.isOperatorModal}
@@ -31,6 +79,7 @@ class OperatorsModal extends Component {
                 <Input
                   type="number"
                   id="operatorsNumber"
+                  name="operatorsNumber"
                   className="large-input"
                   value={(this.props.operator.numberOfOperators) ?
                     (this.props.operator.numberOfOperators) : ""}
@@ -45,6 +94,7 @@ class OperatorsModal extends Component {
                 <Input
                   id="firstName"
                   className="large-input"
+                  name="firstName"
                   value={this.props.operator.firstName}
                   onChange={e => {
                     this.props.onInputChange(e, 'firstName', false);
@@ -57,6 +107,7 @@ class OperatorsModal extends Component {
                 <Input
                   id="phone"
                   className="large-input"
+                  name="phone"
                   value={this.props.operator.phone}
                   onChange={e => {
                     this.props.onInputChange(e, 'phone', false);
@@ -68,6 +119,7 @@ class OperatorsModal extends Component {
                 <Label for="dataPullFrequensy">תדירות שליפת מידע</Label>
                 <Input
                   id="dataPullFrequensy"
+                  name="dataPullFrequensy"
                   className="large-input"
                   value={this.props.operator.dataPullFrequensy}
                   onChange={e => {
@@ -81,6 +133,7 @@ class OperatorsModal extends Component {
                 <Input
                   type="number"
                   id="numberOfPreviousStations"
+                  name="numberOfPreviousStations"
                   className="large-input"
                   value={(this.props.operator.numberOfPreviousStations) ?
                     (this.props.operator.numberOfPreviousStations) : ""}
@@ -95,6 +148,7 @@ class OperatorsModal extends Component {
                 <Input
                   type="select"
                   id="predictionSystem"
+                  name="predictionSystem"
                   value={this.props.operator.predictionSystem}
                   onChange={e => {
                     this.props.onInputChange(e, 'predictionSystem', false);
@@ -112,6 +166,7 @@ class OperatorsModal extends Component {
                 <Input
                   type="select"
                   id="protocolVersion"
+                  name="protocolVersion"
                   value={this.props.operator.protocolVersion}
                   onChange={e => {
                     this.props.onInputChange(e, 'protocolVersion', false);
@@ -128,6 +183,7 @@ class OperatorsModal extends Component {
                 <Label for="addressForTravelQuery">כתובת לשליפת נסיעות פעילות מתוכננות</Label>
                 <Input
                   id="addressForTravelQuery"
+                  name="addressForTravelQuery"
                   className="large-input"
                   value={this.props.operator.addressForTravelQuery}
                   onChange={e => {
@@ -140,6 +196,7 @@ class OperatorsModal extends Component {
                 <Label for="addressForHistoryQuery">כתובת לשאילת היסטוריה</Label>
                 <Input
                   id="addressForHistoryQuery"
+                  name="addressForHistoryQuery"
                   className="large-input"
                   value={this.props.operator.addressForHistoryQuery}
                   onChange={e => {
@@ -154,6 +211,7 @@ class OperatorsModal extends Component {
                 <Label for="operatorName">שם מפעיל</Label>
                 <Input
                   id="operatorName"
+                  name="operatorName"
                   value={this.props.operator.operatorName}
                   onChange={e => {
                     this.props.onInputChange(e, 'operatorName', false);
@@ -165,6 +223,7 @@ class OperatorsModal extends Component {
                 <Label for="lastName">שם משפחה</Label>
                 <Input
                   id="lastName"
+                  name="lastName"
                   value={this.props.operator.lastName}
                   onChange={e => {
                     this.props.onInputChange(e, 'lastName', false);
@@ -176,6 +235,7 @@ class OperatorsModal extends Component {
                 <Label for="email">דואר אלקטרוני</Label>
                 <Input
                   id="email"
+                  name="email"
                   value={this.props.operator.email}
                   onChange={e => {
                     this.props.onInputChange(e, 'email', false);
@@ -186,7 +246,8 @@ class OperatorsModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={() => this.props.onAddOperator()}>
+            <Button color="primary" type="submit" onClick={() => this.props.onAddOperator()}>
+            {/* <Button color="primary" type="submit"> */}
               אישור
             </Button>
             <Button
@@ -198,6 +259,8 @@ class OperatorsModal extends Component {
           </ModalFooter>
         </Modal>
       </div>
+      )}
+      </Formik>
     );
   }
 }

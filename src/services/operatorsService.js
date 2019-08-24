@@ -6,7 +6,7 @@ function getEmptyOperator() {
         operatorName: '',
         isManageble: true,
         isFunctional: true,
-        ContactMan:  "יונתן כהן",
+        ContactMan: "יונתן כהן",
         lastQueryDate: '3/3/2019',
         lastPullDate: '3/3/2019',
         lastCorrectPullDate: '3/3/2019',
