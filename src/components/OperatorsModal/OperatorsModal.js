@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Table,
   Button,
   FormGroup,
   Label,

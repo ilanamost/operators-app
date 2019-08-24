@@ -1,15 +1,6 @@
 import React from "react";
 
-import {
-  Table,
-  Button,
-  Collapse,
-  Card,
-  CardBody,
-  FormGroup,
-  Label,
-  Input
-} from "reactstrap";
+import { Table, Collapse } from "reactstrap";
 
 import TableCard from "../TableCard/TableCard";
 

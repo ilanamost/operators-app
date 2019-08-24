@@ -61,7 +61,6 @@ class App extends Component {
   operatorSearch = term => {
     const { pagination } = this.state;
     const operators = operatorsService.getOperators(this.state.operators, term);
-    const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
     const filteredOperators = 
     this.getOperatorsPerPage(
       operators, 
@@ -73,7 +72,7 @@ class App extends Component {
   };
 
   toggleOperatorModal = id => {
-    let { operators, operator } = this.state;
+    let { operators } = this.state;
     let operatorToEdit;
     if (id) {
       operatorToEdit = operatorsService.getOperatorById(operators, id);
@@ -147,7 +146,7 @@ class App extends Component {
   };
 
   selectValue = (rowsNumber) => {
-    const { operators, pagination } = this.state;
+    const { operators } = this.state;
     const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
     const currPage = 1;
     const filteredOperators = 
@@ -173,10 +172,14 @@ class App extends Component {
           return ++currPage;
         }
         return currPage;
+
       case 'pervious':
         if(currPage > 1) {
           return --currPage;
         }
+        return currPage;
+        
+      default:
         return currPage;
     }
   }
