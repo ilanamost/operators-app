@@ -149,15 +149,16 @@ class App extends Component {
   selectValue = (rowsNumber) => {
     const { operators, pagination } = this.state;
     const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
+    const currPage = 1;
     const filteredOperators = 
     this.getOperatorsPerPage(
       operators, 
-      (pagination.currPage - 1)*rowsNumber, 
-      rowsNumber*pagination.currPage);
+      (currPage - 1)*rowsNumber, 
+      rowsNumber*currPage);
 
     this.setState({
       pagination: {
-        currPage: pagination.currPage, 
+        currPage: currPage, 
         rowsNumber: rowsNumber, 
         numberOfPages: numberOfPages
       },
