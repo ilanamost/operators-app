@@ -60,9 +60,16 @@ class App extends Component {
   }
  
   operatorSearch = term => {
+    const { pagination } = this.state;
     const operators = operatorsService.getOperators(this.state.operators, term);
+    const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
+    const filteredOperators = 
+    this.getOperatorsPerPage(
+      operators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
     this.setState({
-      filteredOperators: operators
+      filteredOperators: filteredOperators
     });
   };
 
