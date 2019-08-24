@@ -66,12 +66,24 @@ thead > tr {
 }
 
 .open {
-  height: 400px;
+  height: 27vw;
   transition: height 0.25s ease-in;
 }
 
 .arrow {
   cursor: pointer;
   position: relative;
+}
+
+@media(max-width: 1500px) {
+  .open {
+    height: 30vw;
+  }
+}
+
+@media(max-width: 1300px) {
+  .open {
+    height: 32vw;
+  }
 }
 
