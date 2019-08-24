@@ -55,3 +55,10 @@
 .modal-dialog {
     max-width: 890px;
 }
+
+.validation-label {
+    text-align: left;
+    margin-left: 10%;
+    color: red;
+    font-weight: bold;
+}
