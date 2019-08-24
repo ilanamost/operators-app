@@ -4,21 +4,22 @@ import "./App.css";
 import OperatorsTable from "./components/OperatorsTable/OperatorsTable";
 import OperatorsFilter from "./components/OperatorsFilter/OperatorsFilter";
 import OperatorsModal from "./components/OperatorsModal/OperatorsModal";
+import Pagination from "./components/Pagination/Pagination";
 
 import utilsService from "./services/utilsService";
 import operatorsService from "./services/operatorsService";
 
-import {
-  Table,
-  Button,
-  Label,
-  Input,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  FormGroup
-} from "reactstrap";
+// import {
+//   Table,
+//   Button,
+//   Label,
+//   Input,
+//   Dropdown,
+//   DropdownToggle,
+//   DropdownMenu,
+//   DropdownItem,
+//   FormGroup
+// } from "reactstrap";
 
 const FILE_NAME = "operators";
 
@@ -209,47 +210,13 @@ class App extends Component {
             onToggleOperatorModal={this.toggleOperatorModal}
           />
 
-          <div className="pagination-container">
-            <Button onClick={(e) => {
-                e.stopPropagation();
-                this.changeCurrPage('next');
-              }}> Next </Button>
-            <div className="middle-section">
-              <Dropdown
-                className="dropdown"
-                isOpen={this.state.dropdownOpen}
-                toggle={this.toggleDropdown}
-              >
-                <DropdownToggle caret> rows { pagination.rowsNumber} </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem onClick={(e) => {
-                    e.stopPropagation();
-                    this.selectValue(10);
-                    }}>rows 10</DropdownItem>
-
-                    <DropdownItem onClick={(e) => {
-                    e.stopPropagation();
-                    this.selectValue(5);
-                    }}>rows 5</DropdownItem>
-
-                    <DropdownItem onClick={(e) => {
-                    e.stopPropagation();
-                    this.selectValue(2);
-                    }}>rows 2</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-
-              <FormGroup className="page-section">
-                <Label> Page </Label>
-                <Input disabled value={ pagination.currPage }/>
-                <Label> of { pagination.numberOfPages } </Label>
-              </FormGroup>
-            </div>
-            <Button  onClick={(e) => {
-              e.stopPropagation();
-              this.changeCurrPage('pervious');
-            }}> Pervious </Button>
-          </div>
+          <Pagination 
+            pagination={pagination}
+            isOpen={this.state.dropdownOpen}
+            toggle={this.toggleDropdown}
+            selectValue={this.selectValue}
+            changeCurrPage={this.changeCurrPage}
+            />
         </div>
 
         <OperatorsModal
