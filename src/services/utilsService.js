@@ -20,7 +20,7 @@ function getCurrPage(direction, currPage, numberOfPages){
       }
       return currPage;
 
-    case 'pervious':
+    case 'previous':
       if(currPage > 1) {
         return --currPage;
       }

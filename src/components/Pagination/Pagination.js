@@ -53,8 +53,8 @@ const Pagination = props => {
             </div>
             <Button onClick={(e) => {
                 e.stopPropagation();
-                props.changeCurrPage('pervious');
-            }}> Pervious </Button>
+                props.changeCurrPage('previous');
+            }}> Previous </Button>
         </div>
     )
 }

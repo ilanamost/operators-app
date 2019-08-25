@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import { Button, Input } from "reactstrap";
-
 import './OperatorsFilter.scss';
 
 class OperatorsFilter extends Component {

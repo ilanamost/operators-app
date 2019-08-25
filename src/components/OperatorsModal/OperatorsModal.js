@@ -65,7 +65,8 @@ class OperatorsModal extends Component {
               </ModalHeader>
               <ModalBody>
                 <FormGroup>
-                  <ModalGroupInput field={'numberOfOperators'} 
+                  <ModalGroupInput 
+                    field={'numberOfOperators'} 
                     type={'number'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -75,7 +76,8 @@ class OperatorsModal extends Component {
                       this.props.onInputChange(e, 'numberOfOperators', true);
                   }}/>   
 
-                  <ModalGroupInput field={'firstName'} 
+                  <ModalGroupInput 
+                    field={'firstName'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -86,7 +88,8 @@ class OperatorsModal extends Component {
                     }}/>   
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.firstName, 'required|letters')}</div>
 
-                  <ModalGroupInput field={'phone'} 
+                  <ModalGroupInput 
+                    field={'phone'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -97,7 +100,8 @@ class OperatorsModal extends Component {
                     }}/>   
                   <div className="validation-label">{this.validator.message('phone', this.props.operator.phone, 'phone')}</div>
 
-                  <ModalGroupInput field={'dataPullFrequency'} 
+                  <ModalGroupInput 
+                    field={'dataPullFrequency'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -143,7 +147,8 @@ class OperatorsModal extends Component {
                     options={['פרוט 1', 'פרוט 2', 'פרוט 3']}
                   />  
 
-                  <ModalGroupInput field={'addressForTravelQuery'} 
+                  <ModalGroupInput 
+                    field={'addressForTravelQuery'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -154,7 +159,8 @@ class OperatorsModal extends Component {
                   }}/> 
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.addressForTravelQuery, 'letters')}</div>
                   
-                  <ModalGroupInput field={'addressForHistoryQuery'} 
+                  <ModalGroupInput 
+                    field={'addressForHistoryQuery'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -167,7 +173,8 @@ class OperatorsModal extends Component {
                 </FormGroup>
 
                 <FormGroup>
-                  <ModalGroupInput field={'operatorName'} 
+                  <ModalGroupInput 
+                    field={'operatorName'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -178,7 +185,8 @@ class OperatorsModal extends Component {
                   }}/>
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.operatorName, 'required|letters')}</div>
 
-                  <ModalGroupInput field={'lastName'} 
+                  <ModalGroupInput 
+                    field={'lastName'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -189,7 +197,8 @@ class OperatorsModal extends Component {
                   }}/>
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.lastName, 'required|letters')}</div>
 
-                  <ModalGroupInput field={'email'} 
+                  <ModalGroupInput 
+                    field={'email'} 
                     type={'text'} 
                     className={'large-input'}
                     operator={this.props.operator}

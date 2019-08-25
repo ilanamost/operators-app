@@ -136,13 +136,13 @@ class App extends Component {
 
   toggleOperatorModal = id => {
     let { operators } = this.state;
-    let operatorToEdit;
+    let operatorToEdit = operatorsService.getEmptyOperator();
     if (id) {
       operatorToEdit = operatorsService.getOperatorById(operators, id);
     }
     this.setState({
       isOperatorModal: !this.state.isOperatorModal,
-      operator: id ? operatorToEdit : operatorsService.getEmptyOperator(),
+      operator: operatorToEdit,
       isInEditMode: id ? true : false
     });
   };
