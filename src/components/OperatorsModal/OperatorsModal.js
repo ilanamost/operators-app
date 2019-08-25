@@ -201,6 +201,7 @@ class OperatorsModal extends Component {
                   <div className="validation-label">{this.validator.message('email', this.props.operator.email, 'required|email')}</div>
                 </FormGroup>
               </ModalBody>
+
               <ModalFooter>
                 <Button color="primary" type="submit" onClick={() => this.submitForm()}>
                   אישור
