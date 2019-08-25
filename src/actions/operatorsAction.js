@@ -5,10 +5,10 @@ import operatorsService from '../services/operatorsService';
 
 const FILE_NAME = "operators";
 
-export function createOperator(newOperator) {
+export function createOperator(operators, newOperator) {
   return dispatch => {
-    const operators = operatorsService.addOperator(newOperator);
-    dispatch(loadOperators(operators));
+    const newOperators = operatorsService.addOperator(operators, newOperator);
+    dispatch(loadOperators(newOperators));
   };
 }
 

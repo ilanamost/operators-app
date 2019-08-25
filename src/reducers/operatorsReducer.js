@@ -1,10 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
-import _ from "lodash";
+import _ from 'lodash';
+import operatorsService from '../services/operatorsService';
 
 const initState = {
     operators: [],
     filteredOperators: [],
-    operator: null
+    operator: operatorsService.getEmptyOperator()
 };
 
 export default (state = initState, action) => {

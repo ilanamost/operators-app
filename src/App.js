@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { loadOperators, getFilteredOperators } from "./actions/operatorsAction";
+import { loadOperators, getFilteredOperators, createOperator } from "./actions/operatorsAction";
 import { bindActionCreators } from 'redux';
 import "./App.scss";
 
@@ -36,6 +36,10 @@ class App extends Component {
 
      if (nextProps.filteredOperators.length) {
       this.changeStateOnFilteredOperatorsLoad(nextProps);
+     }
+
+     if (nextProps.operator) {
+      this.changeStateOnOperatorAdd(nextProps);
      }
   }
 
@@ -76,6 +80,30 @@ class App extends Component {
     });
   }
 
+  changeStateOnOperatorAdd(nextProps) {
+    let { pagination } = this.state;
+    const newOperators = nextProps.operators;
+
+    const filteredOperators = this.getOperatorsPerPage(
+      newOperators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
+
+    const numberOfPages =  this.getNumOfPages(newOperators.length , pagination.rowsNumber);
+
+    this.setState({
+      operators: newOperators,
+      filteredOperators: filteredOperators.reverse(),
+      isOperatorModal: false,
+      operator: operatorsService.getEmptyOperator(),
+      pagination: {
+        numberOfPages: numberOfPages,
+        currPage: pagination.currPage, 
+        rowsNumber: pagination.rowsNumber
+      }
+    });
+  }
+
   componentDidMount() {
     this.props.loadOperators(null, null);
   }
@@ -103,29 +131,8 @@ class App extends Component {
   };
 
   addOperator = () => {
-    let { operators, operator, pagination } = this.state;
-    const newOperators = operatorsService.addOperator(operators, operator);
-
-    const filteredOperators = this.getOperatorsPerPage(
-      newOperators, 
-      (pagination.currPage - 1)*pagination.rowsNumber, 
-      pagination.rowsNumber*pagination.currPage);
-
-    const numberOfPages =  this.getNumOfPages(newOperators.length , pagination.rowsNumber);
-
-    this.setState({
-      operators: newOperators,
-      filteredOperators: filteredOperators.reverse(),
-      isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator(),
-      pagination: {
-        numberOfPages: numberOfPages,
-        currPage: pagination.currPage, 
-        rowsNumber: pagination.rowsNumber
-      }
-    });
-
-    this.props.createOperator(operator);
+    let { operators, operator } = this.state;
+    this.props.createOperator(operators, operator);
   };
 
   updateOperator = () => {
@@ -275,12 +282,17 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     operators: state.operatorsReducer.operators,
-    filteredOperators: state.operatorsReducer.filteredOperators
+    filteredOperators: state.operatorsReducer.filteredOperators,
+    operator: state.operatorsReducer.operator
   };
 };
 
 const mapActionsToProps = dispatch => {
-  return bindActionCreators({ loadOperators, getFilteredOperators }, dispatch);
+  return bindActionCreators({ 
+    loadOperators, 
+    getFilteredOperators, 
+    createOperator }, 
+    dispatch);
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(App);

@@ -30,12 +30,14 @@ class OperatorsModal extends Component {
   }
 
   submitForm() {
-    if (this.validator.allValid()) {
-      this.props.onAddOperator();
-    } else {
-      this.validator.showMessages();
-      this.forceUpdate();
-    }
+    // if (this.validator.allValid()) {
+    //   this.props.onAddOperator();
+    // } else {
+    //   this.validator.showMessages();
+    //   this.forceUpdate();
+    // }
+
+    this.props.onAddOperator();
   }
 
   cancelSubmit(){
