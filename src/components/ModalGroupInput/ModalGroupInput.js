@@ -4,6 +4,8 @@ import './ModalGroupInput.scss';
 
 const ModalGroupInput = props => {
     const { field, type, className, operator, onChange, label, min } = props;
+    const value = (operator[field]) ? operator[field] : '';
+    
     return (
         <div className="modal-group">
         <Label for={field}>{label}</Label>
@@ -13,7 +15,7 @@ const ModalGroupInput = props => {
           id={field}
           name={field}
           className={className}
-          value={(operator[field])}
+          value={value}
           onChange={e => {
             onChange(e);
           }}
