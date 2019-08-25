@@ -21,7 +21,7 @@ const SelectGroupInput = props => {
             className={className}
             value={operator.predictionSystem}
             onChange={e => {
-                onChange(e);
+              onChange(e);
             }}
           >
             <option defaultValue=""> Select </option>
