@@ -11,7 +11,7 @@ import {
     FormGroup
 } from "reactstrap";
 
-import "./Pagination.css";
+import "./Pagination.scss";
 
 const Pagination = props => {
     return (

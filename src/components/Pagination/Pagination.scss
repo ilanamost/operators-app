@@ -1,0 +1,94 @@
+.pagination-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border: 2px solid #dbdbdb;
+    height: 60px;
+    border-top: 1px solid #dbdbdb;
+    box-shadow: -1px 0px 20px 7px #dbdbdb;
+
+    .btn-secondary {
+        background-color: #f2f3f3;
+        color: #c2c2c2;
+        margin: 5px;
+        border: unset;
+        font-size: 1vw;
+
+        &:hover {
+            color: #fff;
+            background-color: #5a62686b;
+        }
+
+        &:focus {
+            box-shadow: unset;
+        }
+    }
+
+    .middle-section {
+        display: flex;
+        justify-content: space-around;
+        height: 55px;
+        align-items: center;
+
+        .page-section {
+            justify-content: space-around;
+            margin-bottom: unset;
+            align-items: center;
+            color: #6c757e;
+            display: grid;
+            grid-template-columns: 1fr 4fr 1fr;
+            font-size: 1vw;
+
+            label {
+                margin-bottom: unset;
+            }
+        }
+
+        .dropdown-menu {
+            .dropdown-item {
+                font-size: 1vw;
+            }
+        }
+
+        .dropdown-toggle {
+            background-color: #fff;
+            color: #6c758c;
+            width: 136px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1vw;
+
+            &:hover, &:focus {
+                color: #fff;
+                background-color: #5a62686b;
+                border: unset;
+                width: 136px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                box-shadow: unset;
+            }
+
+            &:focus {
+                color: #fff;
+                box-shadow: unset;
+                background-color: #5a62686b;
+            }
+
+            &::before {
+                display: inline-block;
+                margin-left: .255em;
+                vertical-align: .255em;
+                content: "";
+                border-top: .3em solid;
+                border-right: .3em solid transparent;
+                border-bottom: 0;
+                border-left: .3em solid transparent;
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
