@@ -53,57 +53,57 @@ const TableCard = props => {
             </Label>
           </FormGroup>
            
-           <FormGroup className="second-row-second">
-           <div className="table-group">
-          <Label for="dataPullFrequensy">תדירות שליפת המידע</Label>
-          <Input
+          <FormGroup className="second-row-second">
+            <div className="table-group">
+              <Label for="dataPullFrequensy">תדירות שליפת המידע</Label>
+              <Input
               id="dataPullFrequensy"
               value={props.operator.dataPullFrequensy} disabled/>
-          </div>
+            </div>
 
-          <div className="table-group">
-            <Label for="numberOfPreviousStations">מס' תחנות קודמות לשליפה</Label>
-            <Input
-             type="number"
+            <div className="table-group">
+              <Label for="numberOfPreviousStations">מס' תחנות קודמות לשליפה</Label>
+              <Input
+              type="number"
               id="numberOfPreviousStations"
               value={props.operator.numberOfPreviousStations}  disabled/>
             </div>
-           </FormGroup>
+          </FormGroup>
 
           <FormGroup className="second-row-third">
            <div className="table-group">
-          <Label for="predictionSystem">מערכת חיזוי</Label>
-          <Input
+            <Label for="predictionSystem">מערכת חיזוי</Label>
+            <Input
               type="select"
               id="predictionSystem"
               value={props.operator.predictionSystem}
               disabled>
               <option defaultValue=""> {props.operator.predictionSystem} </option>
-        </Input>
+            </Input>
           </div>
 
-          <div className="table-group">
-            <Label for="numberOfPreviousStations">גרסת פרוטוקול</Label>
-            <Input
+            <div className="table-group">
+              <Label for="numberOfPreviousStations">גרסת פרוטוקול</Label>
+              <Input
               type="select"
               id="protocolVersion"
               value={props.operator.protocolVersion}
               disabled>
               <option defaultValue=""> {props.operator.protocolVersion} </option>
-            </Input>
+              </Input>
             </div>
            </FormGroup>
 
            <FormGroup className="second-row-fourth">
-           <div className="table-group-column">
-             <Label>כתובת לשאילתת נסיעות</Label>
-             <Label>{props.operator.addressForTravelQuery}</Label>
-           </div>
+            <div className="table-group-column">
+              <Label>כתובת לשאילתת נסיעות</Label>
+              <Label>{props.operator.addressForTravelQuery}</Label>
+            </div>
 
             <div className="input-field-group-column">
-             <Label>כתובת לשאילתת היסטוריה</Label>
-             <Label>{props.operator.addressForHistoryQuery}</Label>
-           </div>
+              <Label>כתובת לשאילתת היסטוריה</Label>
+              <Label>{props.operator.addressForHistoryQuery}</Label>
+            </div>
            </FormGroup>
         </CardBody>
       </Card>
