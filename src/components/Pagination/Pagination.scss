@@ -6,6 +6,11 @@
     border-top: 1px solid #dbdbdb;
     box-shadow: -1px 0px 20px 7px #dbdbdb;
 
+    .form-control:disabled, .form-control[readonly] {
+        font-size: 1vw;
+        background-color: #fff;
+    }
+
     .btn-secondary {
         background-color: #f2f3f3;
         color: #c2c2c2;
@@ -28,6 +33,7 @@
         justify-content: space-around;
         height: 55px;
         align-items: center;
+        font-size: 1vw;
 
         .page-section {
             justify-content: space-around;
@@ -36,7 +42,6 @@
             color: #6c757e;
             display: grid;
             grid-template-columns: 1fr 4fr 1fr;
-            font-size: 1vw;
 
             label {
                 margin-bottom: unset;

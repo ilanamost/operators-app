@@ -33,6 +33,10 @@ class App extends Component {
       numberOfPages: 0
     }
   };
+  
+  componentDidMount() {
+    this.props.loadOperators(null, null);
+  }
 
   componentWillReceiveProps(nextProps) {
      if (nextProps.filteredOperators.length) {
@@ -94,31 +98,7 @@ class App extends Component {
       }
     });
   }
-
-  changeStateOnOperatorAdd(nextProps) {
-    let { pagination } = this.state;
-    const newOperators = nextProps.operators;
-
-    const filteredOperators = operatorsService.getOperatorsPerPage(
-      newOperators, 
-      (pagination.currPage - 1)*pagination.rowsNumber, 
-      pagination.rowsNumber*pagination.currPage);
-
-    const numberOfPages = utilsService.getNumOfPages(newOperators.length , pagination.rowsNumber);
-
-    this.setState({
-      operators: newOperators,
-      filteredOperators: filteredOperators.reverse(),
-      isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator(),
-      pagination: {
-        numberOfPages: numberOfPages,
-        currPage: pagination.currPage, 
-        rowsNumber: pagination.rowsNumber,
-      }
-    });
-  }
-
+  
   changeStateOnOperatorUpdate(nextProps) {
     let { pagination } = this.state;
     const newOperators = nextProps.operators;
@@ -136,8 +116,19 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    this.props.loadOperators(null, null);
+  changeStateOnOperatorAdd(nextProps) {
+    let { pagination } = this.state;
+    const newOperators = nextProps.operators;
+    this.changeStateOnOperatorUpdate(nextProps);
+    const numberOfPages = utilsService.getNumOfPages(newOperators.length , pagination.rowsNumber);
+
+    this.setState({
+      pagination: {
+        numberOfPages: numberOfPages,
+        currPage: pagination.currPage, 
+        rowsNumber: pagination.rowsNumber,
+      }
+    });
   }
 
   operatorSearch = term => {

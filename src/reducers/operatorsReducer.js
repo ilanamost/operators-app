@@ -32,8 +32,7 @@ export default (state = initState, action) => {
       newState.operator = action.payload;
       return newState;
 
-
       default:
-            return state;
+        return state;
     }
   };
