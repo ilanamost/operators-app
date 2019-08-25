@@ -15,6 +15,12 @@ export function createOperator(operators, newOperator) {
 export function updateOperator(operators, operator) {
   return dispatch => {
     const newOperators = operatorsService.updateOperator(operators, operator);
+    
+    dispatch({
+      type: actionTypes.UPDATE_OPERATOR,
+      payload: operator
+    });
+
     dispatch(loadOperators(newOperators));
   };
 }

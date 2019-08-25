@@ -36,18 +36,16 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
      if (nextProps.filteredOperators.length) {
       this.changeStateOnFilteredOperatorsLoad(nextProps);
-      return;
      } 
 
      else if (nextProps.operator) {
+      (nextProps.operator.id) ? 
+      this.changeStateOnOperatorUpdate(nextProps):
       this.changeStateOnOperatorAdd(nextProps);
-      // this.changeStateOnOperatorUpdate(nextProps);
-      return;
      }
      
      else if(nextProps.operators.length) {
       this.changeStateOnOperatorsLoad(nextProps);
-      return;
      }
   }
 
@@ -109,14 +107,13 @@ class App extends Component {
       pagination: {
         numberOfPages: numberOfPages,
         currPage: pagination.currPage, 
-        rowsNumber: pagination.rowsNumber
+        rowsNumber: pagination.rowsNumber,
       }
     });
   }
 
   changeStateOnOperatorUpdate(nextProps) {
-    let { operators, pagination } = this.state;
-    // const newOperators = operatorsService.updateOperator(operators, nextProps.operator);
+    let { pagination } = this.state;
     const newOperators = nextProps.operators;
 
     const filteredOperators = this.getOperatorsPerPage(
@@ -128,8 +125,7 @@ class App extends Component {
       operators: newOperators,
       filteredOperators: filteredOperators.reverse(),
       isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator(),
-      openRowIndex: -1
+      operator: operatorsService.getEmptyOperator()
     });
   }
 
@@ -168,21 +164,7 @@ class App extends Component {
     let { operators, operator } = this.state;
     this.props.updateOperator(operators, operator);
 
-    // let { operators, operator, pagination } = this.state;
-    // const newOperators = operatorsService.updateOperator(operators, operator);
-
-    // const filteredOperators = this.getOperatorsPerPage(
-    //   newOperators, 
-    //   (pagination.currPage - 1)*pagination.rowsNumber, 
-    //   pagination.rowsNumber*pagination.currPage);
-
-    // this.setState({
-    //   operators: newOperators,
-    //   filteredOperators: filteredOperators.reverse(),
-    //   isOperatorModal: false,
-    //   operator: operatorsService.getEmptyOperator(),
-    //   openRowIndex: -1
-    // });
+    this.setState({ openRowIndex: -1 });
   };
 
   handleInputChange = (e, propName, isNumber) => {

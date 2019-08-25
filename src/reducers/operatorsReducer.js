@@ -13,6 +13,7 @@ export default (state = initState, action) => {
     switch (action.type){
       case actionTypes.GET_ALL_OPERATORS:
         newState.operators = action.payload;
+        newState.operator = operatorsService.getEmptyOperator();
         return newState;
 
      case actionTypes.GET_FILTERED_OPERATORS:

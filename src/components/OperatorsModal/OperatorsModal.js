@@ -30,14 +30,12 @@ class OperatorsModal extends Component {
   }
 
   submitForm() {
-    // if (this.validator.allValid()) {
-    //   this.props.onAddOperator();
-    // } else {
-    //   this.validator.showMessages();
-    //   this.forceUpdate();
-    // }
-
-    this.props.onAddOperator();
+    if (this.validator.allValid()) {
+      this.props.onAddOperator();
+    } else {
+      this.validator.showMessages();
+      this.forceUpdate();
+    }
   }
 
   cancelSubmit(){
@@ -85,7 +83,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.firstName, 'required|alpha')}</div>
+                  <div className="validation-label">{this.validator.message('required', this.props.operator.firstName, 'required|alpha')}</div>
 
                   <div className="modal-group">
                     <Label for="phone">טלפון</Label>
