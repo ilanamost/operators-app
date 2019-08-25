@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SimpleReactValidator from 'simple-react-validator';
 
 import ModalGroupInput from '../ModalGroupInput/ModalGroupInput';
+import SelectGroupInput from '../SelectGroupInput/SelectGroupInput';
 
 import {
   Modal,
@@ -66,7 +67,7 @@ class OperatorsModal extends Component {
               </ModalHeader>
               <ModalBody>
                 <FormGroup>
-                  <ModalGroupInput field={'operatorsNumber'} 
+                  <ModalGroupInput field={'numberOfOperators'} 
                     type={'number'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -109,7 +110,8 @@ class OperatorsModal extends Component {
                     }}/>  
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.dataPullFrequency, 'letters')}</div>
                   
-                  <ModalGroupInput field={'numberOfPreviousStations'} 
+                  <ModalGroupInput 
+                    field={'numberOfPreviousStations'} 
                     type={'number'} 
                     className={'large-input'}
                     operator={this.props.operator}
@@ -119,47 +121,29 @@ class OperatorsModal extends Component {
                     this.props.onInputChange(e, 'numberOfPreviousStations', false);
                   }}/>  
 
-                  <div className="modal-group select-group">
-                    <Label for="predictionSystem">מערכת חיזוי</Label>
-                    <div>
-                      <Input
-                        type="select"
-                        id="predictionSystem"
-                        name="predictionSystem"
-                        className="select-control"
-                        value={this.props.operator.predictionSystem}
-                        onChange={e => {
-                          this.props.onInputChange(e, 'predictionSystem', false);
-                        }}
-                      >
-                        <option defaultValue=""> Select </option>
-                        <option value="1">חיזוי 1</option>
-                        <option value="2">חיזוי 2</option>
-                        <option value="3">חיזוי 3</option>
-                      </Input>
-                    </div>
-                  </div>
-
-                  <div className="modal-group select-group">
-                    <Label for="protocolVersion">גרסת פרוטוקול</Label>
-                    <div>
-                      <Input
-                        type="select"
-                        id="protocolVersion"
-                        name="protocolVersion"
-                        className="select-control"
-                        value={this.props.operator.protocolVersion}
-                        onChange={e => {
-                         this.props.onInputChange(e, 'protocolVersion', false);
-                        }}
-                      >
-                        <option defaultValue=""> Select </option>
-                        <option value="1">פרוטוקול 1</option>
-                        <option value="2">פרוטוקול 2</option>
-                        <option value="3">פרוטוקול 3</option>
-                      </Input>
-                    </div>
-                  </div>
+                  <SelectGroupInput
+                    field={'predictionSystem'}
+                    type={'select'}
+                    className={'select-control'}
+                    operator={this.props.operator}
+                    onChange={e => {
+                      this.props.onInputChange(e, 'predictionSystem', false);
+                    }}
+                    label={'מערכת חיזוי'}
+                    options={['חיזוי 1', 'חיזוי 2', 'חיזוי 3']}
+                  />  
+                  
+                  <SelectGroupInput
+                    field={'protocolVersion'}
+                    type={'select'}
+                    className={'select-control'}
+                    operator={this.props.operator}
+                    onChange={e => {
+                      this.props.onInputChange(e, 'protocolVersion', false);
+                    }}
+                    label={'גרסת פרוטוקול'}
+                    options={['פרוט 1', 'פרוט 2', 'פרוט 3']}
+                  />  
 
                   <ModalGroupInput field={'addressForTravelQuery'} 
                     type={'text'} 

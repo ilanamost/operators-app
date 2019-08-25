@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Label, Input } from "reactstrap";
-
 import './ModalGroupInput.scss';
 
 const ModalGroupInput = props => {
@@ -17,7 +15,7 @@ const ModalGroupInput = props => {
           className={className}
           value={(operator[field])}
           onChange={e => {
-            onChange(e, {field}, true);
+            onChange(e);
           }}
         />
       </div>
