@@ -4,7 +4,7 @@ import { Table, Collapse } from "reactstrap";
 
 import TableCard from "../TableCard/TableCard";
 
-import "./OperatorsTable.css";
+import "./OperatorsTable.scss";
 
 const OperatorsTable = props => {
   const operators = props.operators.map((operator, i) => {
@@ -52,7 +52,7 @@ const OperatorsTable = props => {
   });
 
   return (
-    <Table className="operators-table">
+    <Table>
       <thead>
         <tr>
           <th> </th>

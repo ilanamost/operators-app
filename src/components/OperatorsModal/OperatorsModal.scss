@@ -30,6 +30,18 @@
                     text-align: right;
                     max-width: 8vw;
                 }
+
+                .large-input {
+                    width: 15vw;
+                }
+
+                .select-group {
+                    grid-template-columns: 2fr 1fr;
+                }
+
+                .select-control {
+                    width: 7.5vw;
+                }
             }
 
             .validation-label {
@@ -38,6 +50,7 @@
                 color: red;
                 font-weight: bold;
             }
+
         }
 
         .modal-footer {
@@ -52,25 +65,8 @@
 
 }
 
-.select-group {
-    grid-template-columns: 2fr 1fr;
-}
-
-.modal-open .modal {
-    overflow-y: hidden;
-}
-
-.large-input {
-    width: 15vw;
-}
-
 @media(max-width: 1679px) {
     .modal-dialog {
         max-width: 890px;
     }
   }
-
-
-.select-control {
-    width: 7.5vw;
-}
