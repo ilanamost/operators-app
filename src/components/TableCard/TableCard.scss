@@ -85,11 +85,9 @@
         cursor: pointer;
         margin-bottom: 25px;
 
-        :hover {
-          input ~ {
-            .checkmark {
-              background-color: #ccc !important;
-            }
+        &:hover {
+          input ~ .checkmark {
+            background-color: #ccc;
           }
         }
 
@@ -99,6 +97,14 @@
           cursor: pointer;
           height: 0;
           width: 0;
+
+          &:checked ~ .checkmark:after {
+            display: block;
+          }
+
+          &:checked ~ .checkmark {
+            background-color: #46B7D3;
+          }
         }
 
         .checkmark {
@@ -111,6 +117,9 @@
           border-radius: 5px;
 
           &:after {
+            content: "";
+            position: absolute;
+            display: none;
             left: 11px;
             top: 5px;
             width: 5px;
@@ -145,24 +154,6 @@
       }
     }
   }
-}
-
-.checkmark-container:hover input ~ .checkmark {
-  background-color: #ccc !important;
-}
-
-.checkmark-container input:checked ~ .checkmark {
-  background-color: #46B7D3 !important;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.checkmark-container input:checked ~ .checkmark:after {
-  display: block;
 }
 
 
