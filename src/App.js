@@ -16,8 +16,6 @@ import Pagination from "./components/Pagination/Pagination";
 import operatorsService from "./services/operatorsService";
 import utilsService from "./services/utilsService";
 
-const FILE_NAME = "operators";
-
 class App extends Component {
   state = {
     operators: [],

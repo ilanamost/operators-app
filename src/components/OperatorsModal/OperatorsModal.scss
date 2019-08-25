@@ -21,29 +21,6 @@
         .modal-body {
             display: flex;
 
-            .modal-group {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                margin: 0 0 2% 10%;
-
-                label {
-                    text-align: right;
-                    max-width: 8vw;
-                }
-
-                .large-input {
-                    width: 15vw;
-                }
-
-                .select-group {
-                    grid-template-columns: 2fr 1fr;
-                }
-
-                .select-control {
-                    width: 7.5vw;
-                }
-            }
-
             .validation-label {
                 text-align: left;
                 margin-left: 10%;

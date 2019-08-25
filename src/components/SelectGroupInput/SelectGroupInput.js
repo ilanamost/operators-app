@@ -6,7 +6,7 @@ const SelectGroupInput = props => {
     const { field, type, className, operator, onChange, label, options } = props;
     const displayedOptions = options.map((option, i) => {
         return (
-        <option value={option}>{option}</option>
+        <option value={option} key={i}>{option}</option>
         )
     })
 
