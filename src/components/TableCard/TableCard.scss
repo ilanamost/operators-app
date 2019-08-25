@@ -1,0 +1,169 @@
+.collapse{
+  position: absolute;
+  top: 73px;
+  right: 35px;
+}
+
+.card-body {
+  background-color: #F5F5F5;
+  width: 90vw;
+  height: 100%;
+  cursor: default;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  font-size: 1vw;
+  grid-column-gap: 1vw;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+
+  .form-group {
+    .btn {
+      border-radius: 3.25rem;
+      border: unset;
+      font-size: 1vw;
+
+      &.btn-secondary {
+        background-color: #46B7D3;
+
+        &:hover {
+          background-color: #2f798b;
+        }
+      }
+    }
+
+    &.form-group-first {
+      width: 200px;
+
+      .form-group-top-container {
+        display: flex;
+        justify-content: space-around;
+
+        .form-group-top-right {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .form-group-top-left {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .form-group-bottom-container {
+        margin-top: 25px;
+      }
+    }
+
+    &.second-row-first {
+      grid-row: 2;
+      grid-column: 1;
+
+      .checkmark-container{
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        margin-bottom: 25px;
+
+        :hover {
+          input ~ {
+            .checkmark {
+              background-color: #ccc !important;
+            }
+          }
+        }
+
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #eee;
+          border-radius: 5px;
+        }
+      }
+    }
+    
+    &.second-row-second {
+      grid-row: 2;
+      grid-column: 2;
+    }
+    
+    &.second-row-third {
+      grid-row: 2;
+      grid-column: 3;
+    }
+    
+    &.second-row-fourth {
+      grid-row: 2;
+      grid-column: 4;
+    }
+  }
+}
+
+.table-group-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-group {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin: 0 0 2% 10%;
+}
+
+.form-control {
+  font-size: 1vw;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #fff;
+  opacity: 1;
+  width: 182px;
+}
+
+.form-check {
+  padding-left: unset;
+  width: 15vw;
+}
+
+.checkmark-container:hover input ~ .checkmark {
+  background-color: #ccc !important;
+}
+
+.checkmark-container input:checked ~ .checkmark {
+  background-color: #46B7D3 !important;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkmark-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark-container .checkmark:after {
+  left: 11px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+

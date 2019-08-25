@@ -54,11 +54,6 @@
       .table-row {
         height: 36px;
         transition: height 0.25s ease-out;
-
-        .open {
-          height: 27vw;
-          transition: height 0.25s ease-in;
-        }
       }
     }
 
@@ -70,14 +65,21 @@
   }
 }
 
+@media(min-width: 1500px) {
+  tr.open {
+    height: 27vw;
+    transition: height 0.25s ease-in;
+  }
+}
+
 @media(max-width: 1500px) {
-  .open {
+  tr.open {
     height: 30vw;
   }
 }
 
 @media(max-width: 1300px) {
-  .open {
+  tr.open {
     height: 32vw;
   }
 }

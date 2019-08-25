@@ -9,7 +9,7 @@ import {
   Input
 } from "reactstrap";
 
-import "./TableCard.css";
+import "./TableCard.scss";
 
 const TableCard = props => {
     return (
