@@ -13,7 +13,7 @@
     "lastName": "levi",
     "email": "test2@test.com",
     "phone": "052-1111111",
-    "dataPullFrequesncy": "כל יום",
+    "dataPullFrequency": "כל יום",
     "numberOfPreviousStations": 5,
     "predictionSystem": "גוגל",
     "protocolVersion": "VM",

@@ -58,7 +58,7 @@ const TableCard = props => {
               <Label for="dataPullFrequensy">תדירות שליפת המידע</Label>
               <Input
               id="dataPullFrequensy"
-              value={props.operator.dataPullFrequensy} disabled/>
+              value={props.operator.dataPullFrequency} disabled/>
             </div>
 
             <div className="table-group">

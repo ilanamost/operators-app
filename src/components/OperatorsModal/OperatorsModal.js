@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import SimpleReactValidator from 'simple-react-validator';
 
+import ModalGroupInput from '../ModalGroupInput/ModalGroupInput';
+
 import {
   Modal,
   ModalHeader,
@@ -64,77 +66,58 @@ class OperatorsModal extends Component {
               </ModalHeader>
               <ModalBody>
                 <FormGroup>
-                  <div className="modal-group">
-                    <Label for="operatorsNumber">מספר המפעילים במערכת</Label>
-                    <Input
-                      type="number"
-                      min="0"
-                      id="operatorsNumber"
-                      name="operatorsNumber"
-                      className="large-input"
-                      value={(this.props.operator.numberOfOperators)}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'numberOfOperators', true);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'operatorsNumber'} 
+                    type={'number'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'מספר המפעילים במערכת'}
+                    min={0}
+                    onChange={e => {
+                      this.props.onInputChange(e, 'numberOfOperators', true);
+                  }}/>   
 
-                  <div className="modal-group">
-                    <Label for="firstName">שם פרטי</Label>
-                    <Input
-                      id="firstName"
-                      className="large-input"
-                      name="firstName"
-                      value={this.props.operator.firstName}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'firstName', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'firstName'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'שם פרטי'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'firstName', false);
+                    }}/>   
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.firstName, 'required|letters')}</div>
 
-                  <div className="modal-group">
-                    <Label for="phone">טלפון</Label>
-                    <Input
-                      id="phone"
-                      className="large-input"
-                      name="phone"
-                      value={this.props.operator.phone}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'phone', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'phone'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'טלפון'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'phone', false);
+                    }}/>   
                   <div className="validation-label">{this.validator.message('phone', this.props.operator.phone, 'phone')}</div>
 
-                  <div className="modal-group">
-                    <Label for="dataPullFrequency">תדירות שליפת מידע</Label>
-                    <Input
-                      id="dataPullFrequency"
-                      name="dataPullFrequency"
-                      className="large-input"
-                      value={this.props.operator.dataPullFrequency}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'dataPullFrequency', false);
-                      }}
-                    />
-                  </div>
-                  <div className="validation-label">{this.validator.message('letters', this.props.operator.dataPullFrequensy, 'letters')}</div>
-
-                  <div className="modal-group">
-                    <Label for="numberOfPreviousStations">מספר תחנות קודמות לשליפה</Label>
-                    <Input
-                      type="number"
-                      min="0"
-                      id="numberOfPreviousStations"
-                      name="numberOfPreviousStations"
-                      className="large-input"
-                      value={(this.props.operator.numberOfPreviousStations)}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'numberOfPreviousStations', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'dataPullFrequency'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'תדירות שליפת מידע'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'dataPullFrequency', false);
+                    }}/>  
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.dataPullFrequency, 'letters')}</div>
+                  
+                  <ModalGroupInput field={'numberOfPreviousStations'} 
+                    type={'number'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'מספר תחנות קודמות לשליפה'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'numberOfPreviousStations', false);
+                  }}/>  
 
                   <div className="modal-group select-group">
                     <Label for="predictionSystem">מערכת חיזוי</Label>
@@ -178,87 +161,74 @@ class OperatorsModal extends Component {
                     </div>
                   </div>
 
-                  <div className="modal-group">
-                    <Label for="addressForTravelQuery">כתובת לשליפת נסיעות פעילות מתוכננות</Label>
-                    <Input
-                      id="addressForTravelQuery"
-                      name="addressForTravelQuery"
-                      className="large-input"
-                      value={this.props.operator.addressForTravelQuery}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'addressForTravelQuery', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'addressForTravelQuery'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'כתובת לשליפת נסיעות פעילות מתוכננות'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'addressForTravelQuery', false);
+                  }}/> 
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.addressForTravelQuery, 'letters')}</div>
-
-                  <div className="modal-group">
-                    <Label for="addressForHistoryQuery">כתובת לשאילת היסטוריה</Label>
-                    <Input
-                      id="addressForHistoryQuery"
-                      name="addressForHistoryQuery"
-                      className="large-input"
-                      value={this.props.operator.addressForHistoryQuery}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'addressForHistoryQuery', false);
-                      }}
-                    />
-                  </div>
+                  
+                  <ModalGroupInput field={'addressForHistoryQuery'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'כתובת לשאילת היסטוריה'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'addressForHistoryQuery', false);
+                  }}/> 
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.addressForHistoryQuery, 'letters')}</div>
                 </FormGroup>
 
                 <FormGroup>
-                  <div className="modal-group">
-                    <Label for="operatorName">שם מפעיל</Label>
-                    <Input
-                      id="operatorName"
-                      name="operatorName"
-                      value={this.props.operator.operatorName}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'operatorName', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'operatorName'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'שם מפעיל'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'operatorName', false);
+                  }}/>
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.operatorName, 'required|letters')}</div>
 
-                  <div className="modal-group">
-                    <Label for="lastName">שם משפחה</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      value={this.props.operator.lastName}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'lastName', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'lastName'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'שם משפחה'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'lastName', false);
+                  }}/>
                   <div className="validation-label">{this.validator.message('letters', this.props.operator.lastName, 'required|letters')}</div>
 
-                  <div className="modal-group">
-                    <Label for="email">דואר אלקטרוני</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      value={this.props.operator.email}
-                      onChange={e => {
-                        this.props.onInputChange(e, 'email', false);
-                      }}
-                    />
-                  </div>
+                  <ModalGroupInput field={'email'} 
+                    type={'text'} 
+                    className={'large-input'}
+                    operator={this.props.operator}
+                    label={'דואר אלקטרוני'}
+                    min={0}
+                    onChange={e => {
+                    this.props.onInputChange(e, 'email', false);
+                  }}/>
                   <div className="validation-label">{this.validator.message('email', this.props.operator.email, 'required|email')}</div>
-
                 </FormGroup>
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" type="submit" onClick={() => this.submitForm()}>
                   אישור
-            </Button>
+                </Button>
                 <Button
                   color="secondary"
                   onClick={() => this.cancelSubmit()}
                 >
                   ביטול
-            </Button>
+                </Button>
               </ModalFooter>
             </Modal>
           </div>
