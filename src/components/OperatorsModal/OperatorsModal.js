@@ -102,14 +102,14 @@ class OperatorsModal extends Component {
                   <div className="validation-label">{this.validator.message('phone', this.props.operator.phone, 'required|phone')}</div>
 
                   <div className="modal-group">
-                    <Label for="dataPullFrequensy">תדירות שליפת מידע</Label>
+                    <Label for="dataPullFrequency">תדירות שליפת מידע</Label>
                     <Input
-                      id="dataPullFrequensy"
-                      name="dataPullFrequensy"
+                      id="dataPullFrequency"
+                      name="dataPullFrequency"
                       className="large-input"
-                      value={this.props.operator.dataPullFrequensy}
+                      value={this.props.operator.dataPullFrequency}
                       onChange={e => {
-                        this.props.onInputChange(e, 'dataPullFrequensy', false);
+                        this.props.onInputChange(e, 'dataPullFrequency', false);
                       }}
                     />
                   </div>

@@ -2,7 +2,7 @@ import utilsService from './utilsService';
 
 function getEmptyOperator() {
     return {
-        id: 1,
+        id: 0,
         operatorName: '',
         isManageble: true,
         isFunctional: true,
@@ -15,7 +15,7 @@ function getEmptyOperator() {
         lastName: '',
         email: '',
         phone: '',
-        dataPullFrequesncy: '',
+        dataPullFrequency: '',
         numberOfPreviousStations: 0,
         predictionSystem: '',
         protocolVersion: '',

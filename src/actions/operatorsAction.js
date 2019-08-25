@@ -12,6 +12,13 @@ export function createOperator(operators, newOperator) {
   };
 }
 
+export function updateOperator(operators, operator) {
+  return dispatch => {
+    const newOperators = operatorsService.updateOperator(operators, operator);
+    dispatch(loadOperators(newOperators));
+  };
+}
+
 export function loadOperators(operators) {
   return dispatch => {
     let operatorsToReturn;

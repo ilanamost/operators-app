@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { loadOperators, getFilteredOperators, createOperator } from "./actions/operatorsAction";
+import { loadOperators, 
+         getFilteredOperators, 
+         createOperator, 
+         updateOperator } 
+from "./actions/operatorsAction";
 import { bindActionCreators } from 'redux';
 import "./App.scss";
 
@@ -30,16 +34,20 @@ class App extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-     if(nextProps.operators.length) {
-      this.changeStateOnOperatorsLoad(nextProps);
-     }
-
      if (nextProps.filteredOperators.length) {
       this.changeStateOnFilteredOperatorsLoad(nextProps);
-     }
+      return;
+     } 
 
-     if (nextProps.operator) {
+     else if (nextProps.operator) {
       this.changeStateOnOperatorAdd(nextProps);
+      // this.changeStateOnOperatorUpdate(nextProps);
+      return;
+     }
+     
+     else if(nextProps.operators.length) {
+      this.changeStateOnOperatorsLoad(nextProps);
+      return;
      }
   }
 
@@ -62,21 +70,23 @@ class App extends Component {
         rowsNumber: rowsNumber, 
         numberOfPages: numberOfPages
       },
-      filteredOperators: filteredOperators.reverse() 
+      filteredOperators: filteredOperators.reverse()
     });
   }
 
   changeStateOnFilteredOperatorsLoad(nextProps) {
     const { pagination } = this.state;
+    let filteredOperators;
     const operators = nextProps.filteredOperators;
-    const filteredOperators = 
-    this.getOperatorsPerPage(
-      operators, 
-      (pagination.currPage - 1)*pagination.rowsNumber, 
-      pagination.rowsNumber*pagination.currPage);
+
+    filteredOperators = this.getOperatorsPerPage(
+        operators, 
+        (pagination.currPage - 1)*pagination.rowsNumber, 
+        pagination.rowsNumber*pagination.currPage);
 
     this.setState({
-      filteredOperators: filteredOperators.reverse() 
+      filteredOperators: filteredOperators.reverse(),
+      isOperatorModal: false 
     });
   }
 
@@ -101,6 +111,25 @@ class App extends Component {
         currPage: pagination.currPage, 
         rowsNumber: pagination.rowsNumber
       }
+    });
+  }
+
+  changeStateOnOperatorUpdate(nextProps) {
+    let { operators, pagination } = this.state;
+    // const newOperators = operatorsService.updateOperator(operators, nextProps.operator);
+    const newOperators = nextProps.operators;
+
+    const filteredOperators = this.getOperatorsPerPage(
+      newOperators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
+
+    this.setState({
+      operators: newOperators,
+      filteredOperators: filteredOperators.reverse(),
+      isOperatorModal: false,
+      operator: operatorsService.getEmptyOperator(),
+      openRowIndex: -1
     });
   }
 
@@ -136,21 +165,24 @@ class App extends Component {
   };
 
   updateOperator = () => {
-    let { operators, operator, pagination } = this.state;
-    const newOperators = operatorsService.updateOperator(operators, operator);
+    let { operators, operator } = this.state;
+    this.props.updateOperator(operators, operator);
 
-    const filteredOperators = this.getOperatorsPerPage(
-      newOperators, 
-      (pagination.currPage - 1)*pagination.rowsNumber, 
-      pagination.rowsNumber*pagination.currPage);
+    // let { operators, operator, pagination } = this.state;
+    // const newOperators = operatorsService.updateOperator(operators, operator);
 
-    this.setState({
-      operators: newOperators,
-      filteredOperators: filteredOperators.reverse(),
-      isOperatorModal: false,
-      operator: operatorsService.getEmptyOperator(),
-      openRowIndex: -1
-    });
+    // const filteredOperators = this.getOperatorsPerPage(
+    //   newOperators, 
+    //   (pagination.currPage - 1)*pagination.rowsNumber, 
+    //   pagination.rowsNumber*pagination.currPage);
+
+    // this.setState({
+    //   operators: newOperators,
+    //   filteredOperators: filteredOperators.reverse(),
+    //   isOperatorModal: false,
+    //   operator: operatorsService.getEmptyOperator(),
+    //   openRowIndex: -1
+    // });
   };
 
   handleInputChange = (e, propName, isNumber) => {
@@ -291,7 +323,8 @@ const mapActionsToProps = dispatch => {
   return bindActionCreators({ 
     loadOperators, 
     getFilteredOperators, 
-    createOperator }, 
+    createOperator,
+    updateOperator }, 
     dispatch);
 };
 

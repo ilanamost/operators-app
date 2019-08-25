@@ -24,6 +24,14 @@ export default (state = initState, action) => {
         newState.operators.push(action.payload);
         return newState;
 
+      case actionTypes.UPDATE_OPERATOR:
+      if (!action.payload) {
+        return null;
+      }
+      newState.operator = action.payload;
+      return newState;
+
+
       default:
             return state;
     }
