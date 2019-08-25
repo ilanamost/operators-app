@@ -20,8 +20,8 @@ const TableCard = props => {
         <FormGroup className="form-group-first">
           <div className="form-group-top-container">
             <div className="form-group-top-right">
-              <Label> {props.operator.firstName}  {props.operator.lastName}</Label>
-              <Label> {props.operator.operatorName} </Label>
+              <Label className="bold-label"> {props.operator.firstName}  {props.operator.lastName}</Label>
+              <Label className="bold-label"> {props.operator.operatorName} </Label>
             </div>
 
           <div className="form-group-top-left">

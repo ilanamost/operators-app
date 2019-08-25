@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 
 import OperatorsTable from "./components/OperatorsTable/OperatorsTable";
 import OperatorsFilter from "./components/OperatorsFilter/OperatorsFilter";

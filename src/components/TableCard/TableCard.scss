@@ -30,8 +30,25 @@
       }
     }
 
+    
+    .table-group {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      margin: 0 0 2% 10%;
+
+      .form-control {
+        font-size: 1vw;
+
+        &:disabled, [readonly] {
+          background-color: #fff;
+          opacity: 1;
+          width: 182px;
+        }
+      }
+    }
+
     &.form-group-first {
-      width: 200px;
+      width: 100%;
 
       .form-group-top-container {
         display: flex;
@@ -40,6 +57,10 @@
         .form-group-top-right {
           display: flex;
           flex-direction: column;
+
+          .bold-label {
+            font-weight: bold;
+          }
         }
         
         .form-group-top-left {
@@ -57,7 +78,7 @@
       grid-row: 2;
       grid-column: 1;
 
-      .checkmark-container{
+      .checkmark-container {
         display: block;
         position: relative;
         padding-left: 35px;
@@ -88,6 +109,18 @@
           width: 25px;
           background-color: #eee;
           border-radius: 5px;
+
+          &:after {
+            left: 11px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
         }
       }
     }
@@ -105,34 +138,13 @@
     &.second-row-fourth {
       grid-row: 2;
       grid-column: 4;
+
+      .table-group-column {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
-}
-
-.table-group-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.table-group {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin: 0 0 2% 10%;
-}
-
-.form-control {
-  font-size: 1vw;
-}
-
-.form-control:disabled, .form-control[readonly] {
-  background-color: #fff;
-  opacity: 1;
-  width: 182px;
-}
-
-.form-check {
-  padding-left: unset;
-  width: 15vw;
 }
 
 .checkmark-container:hover input ~ .checkmark {
@@ -153,17 +165,7 @@
   display: block;
 }
 
-.checkmark-container .checkmark:after {
-  left: 11px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-  transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+
 
 
 
