@@ -280,4 +280,3 @@ const mapActionsToProps = dispatch => {
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
 
-// export default App;

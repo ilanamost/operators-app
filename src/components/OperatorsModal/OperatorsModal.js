@@ -48,11 +48,11 @@ class OperatorsModal extends Component {
 
   cancelSubmit(){
     this.validator.hideMessages();
+    this.validator.purgeFields();
     this.props.onToggleOperatorModal();
   }
 
   render() {
-    this.validator.purgeFields();
     return (
           <div className="operator-modal">
             <Modal
@@ -153,7 +153,7 @@ class OperatorsModal extends Component {
                         <option value="1">חיזוי 1</option>
                         <option value="2">חיזוי 2</option>
                         <option value="3">חיזוי 3</option>
-                     </Input>
+                      </Input>
                     </div>
                   </div>
 
@@ -174,7 +174,7 @@ class OperatorsModal extends Component {
                         <option value="1">פרוטוקול 1</option>
                         <option value="2">פרוטוקול 2</option>
                         <option value="3">פרוטוקול 3</option>
-                    </Input>
+                      </Input>
                     </div>
                   </div>
 
