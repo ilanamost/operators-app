@@ -12,7 +12,32 @@ function getNextId(items) {
   return max+1;
 }
 
+function getCurrPage(direction, currPage, numberOfPages){
+  switch(direction) {
+    case 'next':
+      if(currPage < numberOfPages) {
+        return ++currPage;
+      }
+      return currPage;
+
+    case 'pervious':
+      if(currPage > 1) {
+        return --currPage;
+      }
+      return currPage;
+      
+    default:
+      return currPage;
+  }
+}
+
+function getNumOfPages(operatorsLength, rowsNumber) {
+  return  Math.ceil(operatorsLength / rowsNumber);
+}
+
 export default {
   loadJSON,
-  getNextId
+  getNextId,
+  getCurrPage,
+  getNumOfPages
 };

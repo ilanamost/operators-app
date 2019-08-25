@@ -14,6 +14,7 @@ import OperatorsModal from "./components/OperatorsModal/OperatorsModal";
 import Pagination from "./components/Pagination/Pagination";
 
 import operatorsService from "./services/operatorsService";
+import utilsService from "./services/utilsService";
 
 const FILE_NAME = "operators";
 
@@ -52,7 +53,7 @@ class App extends Component {
   changeStateOnOperatorsLoad(nextProps) {
     const { pagination } = this.state;
     const operators = nextProps.operators;
-    const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
+    const numberOfPages = utilsService.getNumOfPages(operators.length , pagination.rowsNumber);
     const rowsNumber = 5;
     const filteredOperators = 
     operatorsService.getOperatorsPerPage(
@@ -103,7 +104,7 @@ class App extends Component {
       (pagination.currPage - 1)*pagination.rowsNumber, 
       pagination.rowsNumber*pagination.currPage);
 
-    const numberOfPages =  this.getNumOfPages(newOperators.length , pagination.rowsNumber);
+    const numberOfPages = utilsService.getNumOfPages(newOperators.length , pagination.rowsNumber);
 
     this.setState({
       operators: newOperators,
@@ -165,7 +166,6 @@ class App extends Component {
   updateOperator = () => {
     let { operators, operator } = this.state;
     this.props.updateOperator(operators, operator);
-
     this.setState({ openRowIndex: -1 });
   };
 
@@ -183,14 +183,12 @@ class App extends Component {
 
   toggleDropdown = () => {
     let { dropdownOpen } = this.state;
-    this.setState({
-      dropdownOpen: !dropdownOpen
-    });
+    this.setState({ dropdownOpen: !dropdownOpen });
   };
 
   selectValue = (rowsNumber) => {
     const { operators } = this.state;
-    const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
+    const numberOfPages = utilsService.getNumOfPages(operators.length, rowsNumber);
     const currPage = 1;
     const filteredOperators = 
     operatorsService.getOperatorsPerPage(
@@ -208,29 +206,10 @@ class App extends Component {
     });
   }
 
-  getCurrPage = (direction, currPage, numberOfPages) => {
-    switch(direction) {
-      case 'next':
-        if(currPage < numberOfPages) {
-          return ++currPage;
-        }
-        return currPage;
-
-      case 'pervious':
-        if(currPage > 1) {
-          return --currPage;
-        }
-        return currPage;
-        
-      default:
-        return currPage;
-    }
-  }
-
   changeCurrPage = (direction) => {
     const { operators, pagination } = this.state;
     let currPage = pagination.currPage;
-    currPage = this.getCurrPage(direction, currPage, pagination.numberOfPages);
+    currPage = utilsService.getCurrPage(direction, currPage, pagination.numberOfPages);
     const filteredOperators = 
     operatorsService.getOperatorsPerPage(
       operators, 
@@ -245,10 +224,6 @@ class App extends Component {
       },
       filteredOperators: filteredOperators.reverse() 
     });
-  }
-
-  getNumOfPages = (operatorsLength, rowsNumber) => {
-    return  Math.ceil(operatorsLength / rowsNumber);
   }
 
   render() {
