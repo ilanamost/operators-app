@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+// import * as operatorsAction from './actions/operatorsAction';
+import { loadOperators } from "./actions/operatorsAction";
+import { bindActionCreators } from 'redux';
 import "./App.scss";
 
 import OperatorsTable from "./components/OperatorsTable/OperatorsTable";
@@ -27,14 +31,9 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    utilsService.loadJSON(FILE_NAME).then(res => {
-      this.setState({
-        operators: res.data,
-        operator: operatorsService.getEmptyOperator()
-      });
-
-      const { operators, pagination } = this.state;
+  componentWillReceiveProps(nextProps) {
+      const { pagination } = this.state;
+      const operators = nextProps.operators;
       const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
       const rowsNumber = 5;
       const filteredOperators = 
@@ -44,6 +43,8 @@ class App extends Component {
         rowsNumber*pagination.currPage);
   
       this.setState({
+        operators: nextProps.operators,
+        operator: operatorsService.getEmptyOperator(),
         pagination: {
           currPage: 1, 
           rowsNumber: rowsNumber, 
@@ -51,7 +52,10 @@ class App extends Component {
         },
         filteredOperators: filteredOperators.reverse() 
       });
-    });
+  }
+
+  componentDidMount() {
+    this.props.loadOperators(null, null);
   }
 
   getOperatorsPerPage = (operators, startIndex, rowsNumber) => {
@@ -106,6 +110,8 @@ class App extends Component {
         rowsNumber: pagination.rowsNumber
       }
     });
+
+    this.props.createOperator(operator);
   };
 
   updateOperator = () => {
@@ -252,4 +258,28 @@ class App extends Component {
   }
 }
 
-export default App;
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     operators: state.operators
+//   }
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     createOperator: operator => dispatch(operatorsAction.createOperator(operator))
+//   }
+// };
+
+const mapStateToProps = state => {
+  return {
+    operators: state.operatorsReducer.operators
+  };
+};
+
+const mapActionsToProps = dispatch => {
+  return bindActionCreators({ loadOperators }, dispatch);
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(App);
+
+// export default App;
