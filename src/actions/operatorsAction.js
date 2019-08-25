@@ -5,13 +5,6 @@ import operatorsService from '../services/operatorsService';
 
 const FILE_NAME = "operators";
 
-// export const createOperator = (operator) => {
-//     return {
-//       type: actionTypes.CREATE_NEW_OPERATOR,
-//       payload: operator
-//     }
-// };
-
 export function createOperator(newOperator) {
   return dispatch => {
     const operators = operatorsService.addOperator(newOperator);
@@ -19,12 +12,12 @@ export function createOperator(newOperator) {
   };
 }
 
-export function loadOperators(filter, operators) {
+export function loadOperators(operators) {
   return dispatch => {
     let operatorsToReturn;
 
     if(operators) {
-      operatorsToReturn = operatorsService.getOperators(operators, filter);
+      operatorsToReturn = operatorsService.getOperators(operators, null);
 
       dispatch({
         type: actionTypes.GET_ALL_OPERATORS,
@@ -32,7 +25,7 @@ export function loadOperators(filter, operators) {
       });
     } else {
       utilsService.loadJSON(FILE_NAME).then((res) => {
-        operatorsToReturn = operatorsService.getOperators(res, filter);
+        operatorsToReturn = operatorsService.getOperators(res.data, null);
         
         dispatch({
           type: actionTypes.GET_ALL_OPERATORS,
@@ -40,5 +33,17 @@ export function loadOperators(filter, operators) {
         });
       });
     }
+  };
+}
+
+export function getFilteredOperators(filter, operators) {
+  return dispatch => {
+    let operatorsToReturn = operatorsService.getOperators(operators, filter);
+
+      dispatch({
+        type: actionTypes.GET_FILTERED_OPERATORS,
+        payload: operatorsToReturn
+      });
+   
   };
 }

@@ -25,7 +25,7 @@ function getEmptyOperator() {
   }
 
 function getOperators(currOperators = null, filterBy = null) {
-    let operatorsToReturn = currOperators.data;
+    let operatorsToReturn = currOperators;
     if (filterBy) {
       operatorsToReturn = currOperators.filter(operator => {
         return operator.operatorName.includes(filterBy);

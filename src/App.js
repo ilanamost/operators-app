@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-// import * as operatorsAction from './actions/operatorsAction';
-import { loadOperators } from "./actions/operatorsAction";
+import { loadOperators, getFilteredOperators } from "./actions/operatorsAction";
 import { bindActionCreators } from 'redux';
 import "./App.scss";
 
@@ -10,7 +9,6 @@ import OperatorsFilter from "./components/OperatorsFilter/OperatorsFilter";
 import OperatorsModal from "./components/OperatorsModal/OperatorsModal";
 import Pagination from "./components/Pagination/Pagination";
 
-import utilsService from "./services/utilsService";
 import operatorsService from "./services/operatorsService";
 
 const FILE_NAME = "operators";
@@ -32,26 +30,50 @@ class App extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-      const { pagination } = this.state;
-      const operators = nextProps.operators;
-      const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
-      const rowsNumber = 5;
-      const filteredOperators = 
-      this.getOperatorsPerPage(
-        operators, 
-        (pagination.currPage - 1)*rowsNumber, 
-        rowsNumber*pagination.currPage);
-  
-      this.setState({
-        operators: nextProps.operators,
-        operator: operatorsService.getEmptyOperator(),
-        pagination: {
-          currPage: 1, 
-          rowsNumber: rowsNumber, 
-          numberOfPages: numberOfPages
-        },
-        filteredOperators: filteredOperators.reverse() 
-      });
+     if(nextProps.operators.length) {
+      this.changeStateOnOperatorsLoad(nextProps);
+     }
+
+     if (nextProps.filteredOperators.length) {
+      this.changeStateOnFilteredOperatorsLoad(nextProps);
+     }
+  }
+
+  changeStateOnOperatorsLoad(nextProps) {
+    const { pagination } = this.state;
+    const operators = nextProps.operators;
+    const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
+    const rowsNumber = 5;
+    const filteredOperators = 
+    this.getOperatorsPerPage(
+      operators, 
+      (pagination.currPage - 1)*rowsNumber, 
+      rowsNumber*pagination.currPage);
+
+    this.setState({
+      operators: nextProps.operators,
+      operator: operatorsService.getEmptyOperator(),
+      pagination: {
+        currPage: 1, 
+        rowsNumber: rowsNumber, 
+        numberOfPages: numberOfPages
+      },
+      filteredOperators: filteredOperators.reverse() 
+    });
+  }
+
+  changeStateOnFilteredOperatorsLoad(nextProps) {
+    const { pagination } = this.state;
+    const operators = nextProps.filteredOperators;
+    const filteredOperators = 
+    this.getOperatorsPerPage(
+      operators, 
+      (pagination.currPage - 1)*pagination.rowsNumber, 
+      pagination.rowsNumber*pagination.currPage);
+
+    this.setState({
+      filteredOperators: filteredOperators.reverse() 
+    });
   }
 
   componentDidMount() {
@@ -63,16 +85,8 @@ class App extends Component {
   }
  
   operatorSearch = term => {
-    const { pagination } = this.state;
-    const operators = operatorsService.getOperators(this.state.operators, term);
-    const filteredOperators = 
-    this.getOperatorsPerPage(
-      operators, 
-      (pagination.currPage - 1)*pagination.rowsNumber, 
-      pagination.rowsNumber*pagination.currPage);
-    this.setState({
-      filteredOperators: filteredOperators.reverse() 
-    });
+    const { operators } = this.state;
+    this.props.getFilteredOperators(term, operators);
   };
 
   toggleOperatorModal = id => {
@@ -258,26 +272,15 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     operators: state.operators
-//   }
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     createOperator: operator => dispatch(operatorsAction.createOperator(operator))
-//   }
-// };
-
 const mapStateToProps = state => {
   return {
-    operators: state.operatorsReducer.operators
+    operators: state.operatorsReducer.operators,
+    filteredOperators: state.operatorsReducer.filteredOperators
   };
 };
 
 const mapActionsToProps = dispatch => {
-  return bindActionCreators({ loadOperators }, dispatch);
+  return bindActionCreators({ loadOperators, getFilteredOperators }, dispatch);
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
