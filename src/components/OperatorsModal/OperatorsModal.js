@@ -21,11 +21,19 @@ class OperatorsModal extends Component {
     this.validator = new SimpleReactValidator({
       messages: {
         email: 'נא הזן מייל חוקי',
-        alpha: 'השדה חייב להכיל תווים בלבד',
+        letters: 'השדה חייב להכיל תווים בלבד',
         phone: 'השדה חייב להיות טלפון חוקי',
         required: 'שדה חובה',
         default: 'הולדיציה נכשלה'
       },
+      validators: {
+        letters: { 
+          message: 'השדה חייב להכיל תווים בלבד',
+          rule: (val, params, validator) => {
+            return validator.helpers.testRegex(val,/^[a-z\u0590-\u05ff]+$/i)
+          },
+        }
+      }
     });
   }
 
@@ -83,7 +91,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('required', this.props.operator.firstName, 'required|alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.firstName, 'required|letters')}</div>
 
                   <div className="modal-group">
                     <Label for="phone">טלפון</Label>
@@ -97,7 +105,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('phone', this.props.operator.phone, 'required|phone')}</div>
+                  <div className="validation-label">{this.validator.message('phone', this.props.operator.phone, 'phone')}</div>
 
                   <div className="modal-group">
                     <Label for="dataPullFrequency">תדירות שליפת מידע</Label>
@@ -111,7 +119,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.dataPullFrequensy, 'alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.dataPullFrequensy, 'letters')}</div>
 
                   <div className="modal-group">
                     <Label for="numberOfPreviousStations">מספר תחנות קודמות לשליפה</Label>
@@ -182,7 +190,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.addressForTravelQuery, 'alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.addressForTravelQuery, 'letters')}</div>
 
                   <div className="modal-group">
                     <Label for="addressForHistoryQuery">כתובת לשאילת היסטוריה</Label>
@@ -196,7 +204,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.addressForHistoryQuery, 'alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.addressForHistoryQuery, 'letters')}</div>
                 </FormGroup>
 
                 <FormGroup>
@@ -211,7 +219,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.operatorName, 'required|alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.operatorName, 'required|letters')}</div>
 
                   <div className="modal-group">
                     <Label for="lastName">שם משפחה</Label>
@@ -224,7 +232,7 @@ class OperatorsModal extends Component {
                       }}
                     />
                   </div>
-                  <div className="validation-label">{this.validator.message('alpha', this.props.operator.lastName, 'required|alpha')}</div>
+                  <div className="validation-label">{this.validator.message('letters', this.props.operator.lastName, 'required|letters')}</div>
 
                   <div className="modal-group">
                     <Label for="email">דואר אלקטרוני</Label>
