@@ -55,7 +55,7 @@ class App extends Component {
     const numberOfPages =  this.getNumOfPages(operators.length , pagination.rowsNumber);
     const rowsNumber = 5;
     const filteredOperators = 
-    this.getOperatorsPerPage(
+    operatorsService.getOperatorsPerPage(
       operators, 
       (pagination.currPage - 1)*rowsNumber, 
       rowsNumber*pagination.currPage);
@@ -76,15 +76,21 @@ class App extends Component {
     const { pagination } = this.state;
     let filteredOperators;
     const operators = nextProps.filteredOperators;
+    const currPage = 1;
 
-    filteredOperators = this.getOperatorsPerPage(
+    filteredOperators = operatorsService.getOperatorsPerPage(
         operators, 
-        (pagination.currPage - 1)*pagination.rowsNumber, 
-        pagination.rowsNumber*pagination.currPage);
+        (currPage - 1)*pagination.rowsNumber, 
+        pagination.rowsNumber*currPage);
 
     this.setState({
       filteredOperators: filteredOperators.reverse(),
-      isOperatorModal: false 
+      isOperatorModal: false,
+      pagination: {
+        rowsNumber: pagination.rowsNumber,
+        currPage: currPage,
+        numberOfPages: pagination.numberOfPages
+      }
     });
   }
 
@@ -92,7 +98,7 @@ class App extends Component {
     let { pagination } = this.state;
     const newOperators = nextProps.operators;
 
-    const filteredOperators = this.getOperatorsPerPage(
+    const filteredOperators = operatorsService.getOperatorsPerPage(
       newOperators, 
       (pagination.currPage - 1)*pagination.rowsNumber, 
       pagination.rowsNumber*pagination.currPage);
@@ -116,7 +122,7 @@ class App extends Component {
     let { pagination } = this.state;
     const newOperators = nextProps.operators;
 
-    const filteredOperators = this.getOperatorsPerPage(
+    const filteredOperators = operatorsService.getOperatorsPerPage(
       newOperators, 
       (pagination.currPage - 1)*pagination.rowsNumber, 
       pagination.rowsNumber*pagination.currPage);
@@ -133,10 +139,6 @@ class App extends Component {
     this.props.loadOperators(null, null);
   }
 
-  getOperatorsPerPage = (operators, startIndex, rowsNumber) => {
-    return operators.slice(startIndex, rowsNumber);
-  }
- 
   operatorSearch = term => {
     const { operators } = this.state;
     this.props.getFilteredOperators(term, operators);
@@ -191,7 +193,7 @@ class App extends Component {
     const numberOfPages =  this.getNumOfPages(operators.length, rowsNumber);
     const currPage = 1;
     const filteredOperators = 
-    this.getOperatorsPerPage(
+    operatorsService.getOperatorsPerPage(
       operators, 
       (currPage - 1)*rowsNumber, 
       rowsNumber*currPage);
@@ -230,7 +232,7 @@ class App extends Component {
     let currPage = pagination.currPage;
     currPage = this.getCurrPage(direction, currPage, pagination.numberOfPages);
     const filteredOperators = 
-    this.getOperatorsPerPage(
+    operatorsService.getOperatorsPerPage(
       operators, 
       (currPage - 1)*pagination.rowsNumber, 
       pagination.rowsNumber*currPage);

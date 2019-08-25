@@ -56,10 +56,15 @@ function updateOperator(operators, operator) {
   return operators;
 }
 
+function getOperatorsPerPage(operators, startIndex, rowsNumber) {
+  return operators.slice(startIndex, rowsNumber);
+}
+
 export default {
   getEmptyOperator,
   getOperators,
   getOperatorById,
   addOperator,
-  updateOperator
+  updateOperator,
+  getOperatorsPerPage
 };

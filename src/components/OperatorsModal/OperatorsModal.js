@@ -44,6 +44,7 @@ class OperatorsModal extends Component {
       this.validator.showMessages();
       this.forceUpdate();
     }
+    // this.props.onAddOperator();
   }
 
   cancelSubmit(){
